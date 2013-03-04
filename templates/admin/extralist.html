@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+</head>
+<body>
+<form method="post" action="" name="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2>
+          <!--{lang_cp str="list"}-->
+        </h2></td>
+      <td width="23%" ><a href="./admin.php?tg=/extraadd/">
+        <!--{lang_cp str="add"}-->
+        </a></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="biaoti bg">
+      <td width="8%">ID</td>
+      <td width="40%"><!--{lang_cp str="title"}--></td>
+	  <td width="10%"><!--{lang_cp str="status"}--></td>
+      <td width="10%"><!--{lang_cp str="pubtime"}--></td>
+      <td width="10%"><!--{lang_cp str="operate"}--></td>
+    </tr>
+    <!--{section name=loop loop=$extra_listArr}-->
+    <tr class="biaoti">
+      <td width="8%"><!--{$extra_listArr[loop].id}--></td>
+      <td width="40%"><!--{$extra_listArr[loop].extra_title}--></td>
+	  <td width="10%"><!--{if $extra_listArr[loop].status eq 0}--><!--{lang_cp str="hide"}--><!--{else}--><!--{lang_cp str="display"}--><!--{/if}--></td>
+      <td width="10%"><!--{$extra_listArr[loop].pubtime|date_format:"Y-m-d"}--></td>
+      <td width="10%"><a href='./admin.php?tg=/extraedit/id/<!--{$extra_listArr[loop].id}-->'>
+        <!--{lang_cp str="editor"}-->
+        </a><a onclick="return confirm('<!--{lang_cp str="confirm_delete"}-->')" href='./admin.php?tg=/extradelete/id/<!--{$extra_listArr[loop].id}-->'>
+        <!--{lang_cp str="del"}-->
+        </a></td>
+    </tr>
+    <!--{/section}-->
+    <tr>
+      <td colspan="4"><!--{page2html str=$pager}--></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

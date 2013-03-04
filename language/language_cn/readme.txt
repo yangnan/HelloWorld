@@ -1,0 +1,2 @@
+lang开头的是后台
+language是前台

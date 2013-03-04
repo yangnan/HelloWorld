@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data" name="theform" id="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2><!--{lang_cp str="add"}--></h2></td>
+      <td width="23%" ><a href="./admin.php?tg=/$FrilinkList/"><!--{lang_cp str="list"}--></a></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="10%" height="40" class="biaoge"><!--{lang_cp str="title"}--></td>
+      <td width="90%"><input name="frilink_title" type="text" class="required" id="frilink_title" value="<!--{$FrilinkArr.frilink_title}-->" size="55"></td>
+    </tr>
+    <tr>
+      <td height="40" valign="middle" class="biaoge"><!--{lang_cp str="frilink_url"}--></td>
+      <td><input type="text" name="frilink_url" id="friend_url" class="required url" value="<!--{$FrilinkArr.frilink_url}-->" size="55"></td>
+    </tr>
+	<tr>
+      <td height="52" valign="middle" class="biaoge"><!--{lang_cp str="status"}--></td>
+      <td align="left" valign="middle"><select name="status">
+          <option value="1" <!--{if $FrilinkArr.status eq 1}-->selected="true"<!--{/if}-->>
+          <!--{lang_cp str="display"}-->
+          </option>
+          <option value="0" <!--{if $FrilinkArr.status eq 0}-->selected="true"<!--{/if}-->>
+          <!--{lang_cp str="hide"}-->
+          </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td height="52" valign="top" class="biaoge">&nbsp;</td>
+      <td align="left" valign="middle"><input type="submit" id="submit" name="Submit" value="<!--{lang_cp str='submit'}-->">
+        <input type="reset" name="" value="<!--{lang_cp str='reset'}-->"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

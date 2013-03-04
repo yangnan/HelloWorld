@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><!--{lang_cp str='provide_manage'}--></title>
+<!--<link rel="stylesheet" type="text/css" href="css/style.css" />-->
+<link rel="stylesheet" type="text/css" href="<!--{getstaticpath}-->style/style.css" />
+<script type="text/javascript">
+function checkForm(){
+	if(document.theform.name1.value == ""){
+		alert("<!--{language_message str='nick_null'}-->！");
+		return false;
+	}else if(document.theform.tel.value == ""){
+		alert("<!--{language_message str='phone_null'}-->！");
+		return false;
+	}else if(document.theform.input2.value == ""){
+		alert("<!--{language_message str='other_contact_null'}-->！");
+		return false;
+	}else if(document.theform.city.value == ""){
+		alert("<!--{language_message str='city_null'}-->！");
+		return false;
+	}else if(document.theform.textarea.value == ""){
+		alert("<!--{language_message str='groupon_null'}-->！");
+		return false;
+	}
+}
+</script>
+</head>
+
+<body>
+<!--头部-->
+<!--{include file="common/header.html"}-->
+<form method="post" action="" name="theform" id="theform" enctype="multipart/form-data">
+<div class="page">
+    	<!--<div class="banner"></div>-->
+        <div class="con">
+        	<div class="con_left">
+            	<div class="con_left01">
+                </div>
+                <div class="con_left02" style="position:relative;">
+                	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  						<tr>
+    						<td valign="top">
+    							<p class="lb01"><!--{lang_cp str='provide_manage'}--></p>
+        							<div class="lin"></div>
+        							<div class="tgtgxx_con">
+        						<p><strong><!--{lang_message str='ifyouisshop'}-->：</strong></p>
+            						<ul>
+            							<li><span><!--{language_cp str='yournick'}--></span><p><input name="name1" id="name1" type="text" class="wbk" /></p></li>
+                						<li><span><!--{language_cp str='yourphone'}--></span><p><input name="tel" id="tel" type="text" class="wbk" /></p></li>
+                						<li><span><!--{lang_cp str='other_contact'}--></span><p><input name="input2" id="input2" type="text" class="wbk" /></p></li>
+                						<li class="ts" style="height:15px; line-height:15px; color:#999;"><span>&nbsp;</span><p style="height:15px; line-height:15px; padding:0;"><!--{lang_message str='yourcontactplease'}--></p></li>
+                						<li>
+											<span><!--{lang_cp str='city'}--></span><p><input type="text" name="city" id="city" /></p>
+                						</li>
+                						<li style="margin-top:5px;" class="lixin">
+											<span><!--{lang_cp str='groupon_content'}--></span>
+												<p class="pxin" style="height:85px;"><textarea name="textarea" id="textarea" cols="30" rows="5" style=""></textarea></p>
+										</li>
+										<li style="margin-top:5px;">
+											<span>&nbsp;</span>
+												<p><input name="upto" id="upto" type="submit" onclick="return checkForm()" class="wban" value="<!--{lang_cp str='submit'}-->" /></p>
+										</li>
+           		 					</ul>
+								</p>
+        </div>
+        </td>
+  </tr>
+  <tr>
+  <td></td>
+  </tr>
+</table>
+</div>
+</form>
+                <div class="con_left03">
+                </div>
+        	</div>
+			<!--右部-->
+			<!--{include file="common/right.html"}-->
+        </div>
+    </div>
+<div class="clera"></div>
+<!--底部-->
+<!--{include file="common/footer.html"}-->
+    
+</body>
+</html>

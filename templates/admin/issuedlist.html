@@ -1,0 +1,112 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+</head>
+<body>
+<form method="post" action="" name="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2>
+          <!--{lang_cp str="list"}-->
+        </h2></td>
+      <td width="23%" >
+	  <a href="./admin.php?tg=/issuedadd"><!--{lang_cp str="add"}--></a>
+	  </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="biaoti bg">
+      <td width="6%"><div align="center">ID</div></td>
+      <td width="6%"><div align="center">
+        <!--{lang_cp str="category"}-->
+      </div></td>
+	  <td width="6%"><div align="center">
+	    <!--{lang_cp str="name"}-->
+      </div></td>
+      <td width="6%"><div align="center">
+        <!--{lang_cp str="city"}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+	    <!--{lang_cp str="business"}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+	    <!--{lang_cp str="original_price"}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+	    <!--{lang_cp str="now_price"}-->
+      </div></td>
+	  <td width="12%"><div align="center">
+	    <!--{lang_cp str="start_time"}-->
+      </div></td>
+	  <td width="12%"><div align="center">
+	    <!--{lang_cp str="end_time"}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+	    <!--{lang_cp str="minimum_number"}-->
+      </div></td>
+      <td width="20%"><div align="center">
+        <!--{lang_cp str="operate"}-->
+      </div></td>
+    </tr>
+    <!--{section name=loop loop=$arr_issued}-->
+    <tr class="biaoti">
+      <td width="6%"><div align="center">
+        <!--{$arr_issued[loop].id}-->
+      </div></td>
+      <td width="6%"><div align="center">
+        <!--{$arr_issued[loop].class_name}-->
+      </div></td>
+      <td width="6%"><div align="center">
+        <!--{$arr_issued[loop].groupon_title}-->
+      </div></td>
+      <td width="6%"><div align="center">
+        <!--{$arr_issued[loop].city_name}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+	    <!--{$arr_issued[loop].seller_name}-->
+      </div></td>
+      <td width="8%"><div align="center">
+        <!--{$arr_issued[loop].groupon_prime_price}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+	    <!--{$arr_issued[loop].groupon_present_price}-->
+      </div></td>
+      <td width="12%"><div align="center">
+        <!--{$arr_issued[loop].groupon_start_time|date_format:"Y-m-d h:i"}-->
+      </div></td>
+	  <td width="12%"><div align="center">
+	    <!--{$arr_issued[loop].groupon_end_time|date_format:"Y-m-d h:i"}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+	    <!--{$arr_issued[loop].groupon_num}-->
+      </div></td>
+      <td width="20%">
+	    <div align="center">
+	      <a href='./admin.php?tg=/issuededit/id/<!--{$arr_issued[loop].id}-->'>
+          <!--{lang_cp str="editor"}-->
+          </a>  / 
+	      <a onClick="return confirm('<!--{lang_cp str="confirm_delete"}-->')" href='./admin.php?tg=/issueddelete/id/<!--{$arr_issued[loop].id}-->'>
+          <!--{lang_cp str="del"}-->
+          </a> <!-- / 
+		  <a href='./admin.php?tg=/attentionlist/id/{$arr_issued[loop].id}'>
+          {lang_cp str="check_attention"}
+          </a>--></div></td>
+    </tr>
+    <!--{/section}-->
+    <tr>
+      <td colspan="4">
+        
+        <div align="left">
+		<!--{page2html str=$pageList}-->
+        </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

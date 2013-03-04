@@ -1,0 +1,104 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+<script language="javascript" type="text/javascript" src="static/js/priveimg.js"></script>
+<script type="text/javascript">
+<!--
+
+$(document).ready(function(){
+  $("#logo_links").hide();
+  $("#upfile").click(function(){
+	  $("#logo_links").hide();
+	  $("#upload").show();
+	  $("#preview_fake").show();
+  });
+  $("#links").click(function(){
+	  $("#logo_links").show();
+	  $("#upload").hide();
+	  $("#preview_fake").hide();
+  });
+});
+
+//-->
+</script>
+<style type="text/css">  
+#preview_fake{ /* 该对象用户在IE下显示预览图片 */  
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);  
+}
+#preview{ /* 该对象用户在FF下显示预览图片 */  
+  width:150px;  
+  height:150px;  
+} 
+#preview_size_fake{ /* 该对象只用来在IE下获得图片的原始尺寸，无其它用途 */  
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image); 
+  visibility:hidden;  
+}  
+</style>
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data" name="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2><!--{lang_cp str="system_settings"}--></h2></td>
+      <td width="23%" ></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr height="30">
+      <td height="20" class="biaoge"><!--{lang_cp str="website_state"}--></td>
+      <td colspan="2"><!--{lang_cp str="open"}--><input name="website_state" type="radio" value="1" <!--{if $web_select.config_frum_status eq 1}-->checked<!--{/if}-->>
+      &nbsp;<!--{lang_cp str="close"}--><input type="radio" name="website_state" value="2" <!--{if $web_select.config_frum_status eq 2}-->checked<!--{/if}-->></td>
+    </tr>
+	 <tr height="30">
+      <td height="20" class="biaoge"><!--{lang_cp str="website_name"}-->&nbsp;</td>
+      <td colspan="2"><input name="website_name" type="text" class="required" id="website_name" size="45" value="<!--{$web_select.config_website_name}-->"></td>
+    </tr>
+	<tr height="30">
+      <td height="20" class="biaoge"><!--{lang_cp str="tg_mode_set"}--></td>
+      <td colspan="2"><!--{lang_cp str="one_group"}--><input name="tg_mode_set" type="radio" value="1" <!--{if $web_select.config_mode_set eq 1}-->checked<!--{/if}-->>
+      &nbsp;<!--{lang_cp str="one_groups"}--><input type="radio" name="tg_mode_set" value="2" <!--{if $web_select.config_mode_set eq 2}-->checked<!--{/if}-->></td>
+    </tr>
+    <tr height="30">
+      <td height="20" valign="middle" class="biaoge"><!--{lang_cp str="website"}--></td>
+      <td colspan="2"><input name="website" type="text" id="website"  size="45" value="<!--{$web_select.config_website}-->"></td>
+    </tr>
+	<tr height="30">
+	  <td height="20" valign="middle" class="biaoge"><!--{lang_cp str="qqandmsn"}--></td>
+	  <td colspan="2"><input type="text" name="contact"  size="45" value="<!--{$web_select.config_contact}-->"></td>
+    </tr>
+	<tr height="30">
+	  <td height="20" valign="middle" class="biaoge"><!--{language_cp str="message_key"}--></td>
+	  <td colspan="2"><input name="smskey" type="text" id="smskey" value="<!--{$web_select.config_sms_key}-->" size="45"></td>
+    </tr>
+	<tr height="30">
+	  <td height="20" valign="middle" class="biaoge"><!--{lang_cp str="mobile"}--></td>
+	  <td colspan="2"><input type="text" name="mobile"  size="45" value="<!--{$web_select.config_mobile}-->"></td>
+    </tr>
+	<tr height="30">
+	  <td height="20" valign="middle" class="biaoge"><!--{lang_cp str="admin_email"}-->&nbsp;</td>
+	  <td colspan="2"><input type="text" name="admin_email"  size="45" value="<!--{$web_select.config_admin_email}-->"></td>
+	</tr>
+	<tr height="30">
+      <td height="20" valign="middle" class="biaoge"><!--{lang_cp str="website_logo"}--></td>
+      <td colspan="2"><!--{lang_cp str="logo_upfile"}-->:<input name="radiobutton" type="radio" id="upfile" value="radiobutton" checked>
+      <!--{lang_cp str="logo_links"}-->:<input type="radio" id="links" name="radiobutton" value="radiobutton"></td>
+    </tr>
+	<tr height="30">
+      <td height="20" valign="middle" class="biaoge"></td>
+      <td width="31%"><input type="text" name="logo_links" class="required" id="logo_links"  size="45" value="<!--{$web_select.config_website_logo}-->"><input type="file" name="photo"  id="upload" size="35" id="photo"  onchange="onUploadImgChange(this)"></td>
+      <td width="58%"><div id="preview_fake"><img id="preview" onload="onPreviewLoad(this)" src="uploadfiles/<!--{$web_select.config_website_logo}-->" width="241px" height="68px"/></div><img id="preview_size_fake" width="150px" height="150px" />  </td>
+	</tr>
+	
+	<tr height="30">
+      <td height="52" valign="top" class="biaoge">&nbsp;</td>
+    <td colspan="2" align="left" valign="middle"><input type="submit" id="submit" name="Submit" value="<!--{lang_cp str='submit'}-->">    </tr>
+  </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>网站相关管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+</head>
+<body>
+<form method="post" action="" name="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="50%">
+	  	<h2>
+          <!--{lang_cp str="list"}-->
+        </h2>
+	  </td>
+	  <td width="50%">
+
+	  	<a href="./admin.php?tg=/inventoryadd/id/<!--{$id}-->"><!--{lang_cp str="add"}--></a>
+	  </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="biaoge">
+      <td width="10%">ID</td>
+	  <td width="20%"><!--{lang_cp str="category"}--><!--{lang_cp str="name"}--></td>
+	  <td width="20%"><!--{lang_cp str="title"}--></td>
+	  <td width="20%"><!--{lang_cp str="content"}--></td>
+	  <td width="20%"><!--{lang_cp str="pubtime"}--></td>
+      <td width="10%"><!--{lang_cp str="operate"}--></td>
+    </tr>
+    <!--{section name=loop loop=$inventorylistlistArr}-->
+    <tr class="biaoge">
+      <td width="10%"><!--{$inventorylistlistArr[loop].id}--></td>
+	  <td width="20%"><!--{$inventorylistlistArr[loop].class_name}--></td>
+	  <td width="20%"><!--{$inventorylistlistArr[loop].title}--></td>
+	  <td width="20%"><!--{$inventorylistlistArr[loop].content}--></td>
+	  <td width="20%"><!--{$inventorylistlistArr[loop].pubtime|date_format}--></td>
+      <td width="10%">
+	  	<a href='./admin.php?tg=/inventoryedit/id/<!--{$inventorylistlistArr[loop].id}-->'><!--{lang_cp str="editor"}--></a>
+		<a onClick="return confirm('<!--{lang_cp str="confirm_delete"}-->')" href='./admin.php?tg=/inventorydelete/id/<!--{$inventorylistlistArr[loop].id}-->'><!--{lang_cp str="del"}--></a>
+	  </td>
+    </tr>
+    <!--{/section}-->
+    <tr>
+      <td colspan="4"><!--{page2html str=$pager}--></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+

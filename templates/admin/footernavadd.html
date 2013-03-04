@@ -1,0 +1,93 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+<script type="text/javascript">
+<!--
+
+$(document).ready(function(){
+$("#theform").validate();
+});
+
+//-->
+</script>
+<style type="text/css">
+<!--
+.STYLE1 {color: #FF0000}
+-->
+</style>
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data" name="theform" id="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2><!--{lang_cp str="add"}--></h2></td>
+      <td width="23%" ><a href="./admin.php?tg=/adminlist/"><!--{lang_cp str="list"}--></a></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height="20" class="biaoge"><!--{lang_cp str="type"}--></td>
+      <td>
+      <select name="bigclass" id="bigclass">
+      <option value="0"><!--{lang_cp str="add"}--><!--{lang_cp str="new"}--><!--{lang_cp str="big_class"}--></option>
+      <!--{section name=loop loop=$bigclass}-->
+        <option value="<!--{$bigclass[loop].id}-->" <!--{if $bigclass[loop].id==$navdata.fid}-->selected<!--{/if}-->><!--{$bigclass[loop].foot_nav_title}--></option>
+      <!--{/section}-->  
+      </select> 
+      <span class="STYLE1">如果是添加大类,请不要选择本选项,默认即可      </span></td>
+    </tr>
+    <tr>
+      <td height="20" class="biaoge"><!--{lang_cp str="nav_name"}--></td>
+      <td><input name="nav_title" type="text" class="required" id="nav_title" size="55" value="<!--{$navdata.foot_nav_title}-->"></td>
+    </tr>
+    <tr>
+      <td height="33" valign="middle" class="biaoge">链接类型</td>
+      <td><input name="linktype" type="radio" value="1" id="nei" checked>
+      内链 
+        <input name="linktype" type="radio" value="2" id="wai">
+      外链</td>
+    </tr>
+    <tr id="content_id">
+      <td valign="top" class="biaoge">信息内容</td>
+      <td style="height:100%">
+	    <iframe id="tgedit" name="tgedit" src="templates/admin/TGEditor/Edit/editor.htm?id=gg_content&ReadCookie=0" frameBorder="0" marginHeight="0" marginWidth="0" scrolling="No" width="500" height="300"></iframe>
+		<textarea name="gg_content" id="gg_content" style="display:none;"><!--{$navdata.content}--></textarea>
+		
+      </td>
+    </tr>
+    <tr id="nav_link_id">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="nav_link"}--></td>
+      <td><input type="text" name="nav_link" id="nav_link" size="55" value="<!--{$navdata.foot_nav_link}-->"></td>
+    </tr>
+	<tr>
+      <td height="20" valign="middle" class="biaoge"><!--{lang_cp str="sort"}--></td>
+      <td><input type="text" name="nav_sorting" class="required" id="nav_sorting" size="55" value="<!--{$navdata.foot_nav_sorting}-->"></td>
+    </tr>
+	<tr>
+      <td height="52" valign="top" class="biaoge">&nbsp;</td>
+      <td align="left" valign="middle"><input type="submit" id="submit" name="Submit" value="<!--{lang_cp str='submit'}-->">
+        <input type="reset" name="" value="<!--{lang_cp str='reset'}-->"></td>
+    </tr>
+  </table>
+</form>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#nav_link_id").hide();
+	$("#nei").click(function(){
+		$("#content_id").show();
+		$("#nav_link_id").hide();	
+	});
+	$("#wai").click(function(){
+		$("#nav_link_id").show();
+		$("#content_id").hide();	
+	});
+});
+</script>
+</body>
+</html>

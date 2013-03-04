@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>团购网</title>
+<link rel="stylesheet" type="text/css" href="<!--{getstaticpath}-->style/style.css" />
+</head>
+<body>
+<!--头部-->
+<!--{include file="common/header.html"}-->
+<div class="page">
+  <div class="con">
+    <div class="con_left wt7">
+      <div class="bd_list">
+        <ul>
+          <li><a href="?tg=/vip/index"><!--{lang_cp str='vipinfo'}--></a><span></span></li>
+          <li><a href="?tg=/vip/shoplist"><!--{lang_cp str='myorder'}--></a> <span></span> </li>
+          <li><a href="?tg=/vip/delshoplist"><!--{lang_cp str='delorder'}--></a> <span></span> </li>
+          <li><a href="?tg=/vip/addresslist"><!--{lang_cp str='shouaddress'}--></a> <span></span> </li>
+          <li class="current"><a href="?tg=/vip/updatematerial"><!--{lang_cp str='updatemyinfo'}--></a><span></span></li>
+          <li><a href="?tg=/vip/index/logstate/logout"><!--{lang_cp str='logout'}--></a> <span></span></li>
+        </ul>
+      </div>
+      <div class="con_leftop"> </div>
+      <div class="con_leftom" style="position:relative;">
+        <p style="line-height:25px;"><a href="?tg=/vip/index"><!--{lang_cp str='vipcenterdefaultpage'}--></a> - <!--{lang_cp str='myvipinfo'}--></p>
+        <form id="form1" name="form1" method="post" action="">		
+        <div class="box up">
+			 <p><span class="wt"><!--{lang_cp str='username'}--></span><!--{$update_material.users_realname}--></p>		
+			 <p><span class="wt"><!--{lang_cp str='email'}--></span><input type="text" id="regemail" class="inp01" name="regemail" value="<!--{$update_material.users_email}-->"></p>
+			 <p><span class="wt"><!--{lang_cp str='newpwd'}--></span><input type="password" id="regpwd" class="inp01" name="regpwd" value="<!--{$update_material.users_password}-->"></p>
+			 <p><span class="wt"><!--{lang_cp str='passwords'}--></span><input type="password" id="regpwd2" class="inp01" name="regpwd2" value="<!--{$update_material.users_password}-->"></p>
+             <p><span class="wt"><!--{lang_cp str='mobile'}--></span><input type="text" id="regmobile" class="inp01" name="regmobile" value="<!--{$update_material.users_phone}-->"></p>
+			 <p><span class="wt">&nbsp;</span><input type="submit" class="btn02" value="更改" name="submit" id="submit"></p>
+        </div>
+        </form>
+      </div>
+      <div class="con_lefter"> </div>
+    </div>
+  </div>
+</div>
+<div class="clera"></div>
+<div style=" position:relative;">
+<!--底部-->
+
+<!--{include file="common/footer.html"}-->
+</body>
+</html>

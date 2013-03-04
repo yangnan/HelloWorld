@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Description" content="<!--{$seo.seo_descript}-->">
+<meta name="Keywords" content="<!--{$seo.seo_keywords}-->">
+<title><!--{lang_cp str='provide_manage'}-->-<!--{$seo.seo_title}--></title>
+<!--<link rel="stylesheet" type="text/css" href="css/style.css" />-->
+<link rel="stylesheet" type="text/css" href="<!--{getstaticpath}-->style/style.css" />
+</head>
+
+<body>
+<!--头部-->
+<!--{include file="common/header.html"}-->
+<form method="post" action="" name="theform" id="theform" enctype="multipart/form-data">
+<div class="page">
+    	<div class="banner"><img src="<!--{getstaticpath}-->images/banner.gif" /></div>
+        <div class="con">
+        	<div class="con_left">
+            	<div class="con_left01">
+                </div>
+                <div class="con_left02" style="position:relative;">
+                	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  						<tr>
+    						<td valign="top">
+    							<p class="lb01"><!--{language_cp str='feedback'}--></p>
+        							<div class="lin"></div>
+        							<div class="tgtgxx_con">
+            						<ul>
+                						<li>
+											<span><!--{language_cp str='feedback'}--></span><p><input type="text" name="title" id="title" /></p>
+                						</li>
+                						<li style="margin-top:5px;" class="lixin">
+											<span><!--{language_cp str='questioncontent'}--></span>
+												<p class="pxin" style="height:85px;"><textarea name="content" id="content" cols="30" rows="5" style=""></textarea></p>
+										</li>
+										<li><span><!--{language_cp str='yournick'}--></span><p><input name="name" id="name" type="text" class="wbk" /></p></li>
+                						<li><span><!--{language_cp str='yourphone'}--></span><p><input name="tel" id="tel" type="text" class="wbk" /></p></li>
+                						<li><span><!--{language_cp str='youremail'}--></span><p><input name="email" id="email" type="text" class="wbk" /></p></li>
+										<li style="margin-top:5px;">
+											<span>&nbsp;</span>
+												<p><input name="upto" id="upto" type="submit" class="wban" value="<!--{lang_cp str='submit'}-->" /></p>
+										</li>
+           		 					</ul>
+								</p>
+        </div>
+        </td>
+  </tr>
+  <tr>
+  <td></td>
+  </tr>
+</table>
+</div>
+</form>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#upto").click(function(){
+        var title = $("#title").val();
+        var content = $("#content").val();
+        var name = $("#name").val();
+        var tel = $("#tel").val();
+		var email = $("#email").val();
+        if(title == "")
+        {
+            alert("<!--{language_message str='title_null'}-->！");
+            $("#title").focus(); 
+            return false;
+        }else if(content == ""){
+			alert("<!--{language_message str='content_null'}-->！");
+			$("#content").focus();
+			return false;
+		}else if(name == ""){
+			alert("<!--{language_message str=nick_null'}-->!");
+			$("#name").focus();
+			return false;
+		}else if(tel == ""){
+			alert("<!--{language_message str='phone_null'}-->！");
+			$("#tel").focus();
+			return false;
+		}else if(!$("#tel").val().match(/^\d+$/)){
+			alert("<!--{language_message str='phoneerror'}-->");
+			$("#tel").focus();
+			return false;
+		}else if($("#email").val() == ""){
+     		alert("<!--{language_message str='not_null_email'}-->");
+     		$("#email").focus();
+	 		return false;
+   		}else if(!$("#email").val().match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)){
+     		alert("<!--{language_message str='effective_email'}-->");
+     		$("#email").focus();
+	 		return false;
+   		}
+	});
+ });
+</script>
+
+
+                <div class="con_left03">
+                </div>
+        	</div>
+			<!--右部-->
+			<!--{include file="common/right.html"}-->
+        </div>
+    </div>
+<div class="clera"></div>
+<!--底部-->
+<!--{include file="common/footer.html"}-->
+<script type="text/javascript" src="common/ip.php?url=<!--{geturl str='2'}-->&refr=<!--{geturl str='1'}-->"></script>
+</body>
+
+</html>

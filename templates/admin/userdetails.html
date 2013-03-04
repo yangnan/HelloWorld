@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data" name="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2><!--{lang_cp str="editor"}--></h2></td>
+      <td width="23%" ><a href="./admin.php?tg=/userlist/"><!--{lang_cp str="list"}--></a></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+ 
+    <tr>
+      <td class="biaoge">ID</td>
+      <td><!--{$arr_edit.id}--></td>
+    </tr>
+	<tr>
+      <td class="biaoge"><!--{lang_cp str="invite_id"}--></td>
+      <td><!--{$arr_edit.invite_id}--></td>
+    </tr>
+	<tr>
+      <td class="biaoge"><!--{lang_cp str="email"}--></td>
+      <td><!--{$arr_edit.users_email}--></td>
+    </tr>
+    <tr>
+      <td class="biaoge"><!--{lang_cp str="username"}--></td>
+      <td><!--{$arr_edit.users_realname}--></td>
+    </tr>
+	<tr>
+      <td class="biaoge"><!--{lang_cp str="register_ip"}--></td>
+      <td><!--{$arr_edit.users_regip|long2ip}--></td>
+    </tr>
+	<tr>
+      <td class="biaoge"><!--{lang_cp str="register_time"}--></td>
+      <td><!--{$arr_edit.users_regtime|date_format:"Y-m-d h:i"}--></td>
+    </tr>
+	
+	<tr>
+      <td class="biaoge"><!--{lang_cp str="last_login_ip"}--></td>
+      <td><!--{$arr_edit.users_lastip|long2ip}--></td>
+    </tr>
+	<tr>
+      <td class="biaoge"><!--{lang_cp str="last_login_time"}--></td>
+      <td><!--{$arr_edit.users_lastime|date_format:"Y-m-d h:i"}--></td>
+    </tr>
+	<tr>
+      <td class="biaoge"><!--{lang_cp str="account_balance"}--></td>
+      <td><!--{$arr_edit.users_money}--></td>
+    </tr>
+	<tr>
+      <td class="biaoge"><!--{lang_cp str="integral"}--></td>
+      <td><!--{$arr_edit.users_integrate}--></td>
+    </tr>
+	<tr>
+      <td class="biaoge"><!--{lang_cp str="qq"}--></td>
+      <td><!--{$arr_edit.users_qq}--></td>
+    </tr>
+	<tr>
+      <td class="biaoge"><!--{lang_cp str="telephone"}--></td>
+      <td><!--{$arr_edit.users_phone}--></td>
+    </tr>
+	<tr>
+      <td class="biaoge"><!--{lang_cp str="city_id"}--></td>
+      <td><!--{$arr_edit.users_city}--></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

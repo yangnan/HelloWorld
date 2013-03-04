@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>团购网</title>
+<link rel="stylesheet" type="text/css" href="<!--{getstaticpath}-->style/style.css" />
+</head>
+<body>
+<!--头部-->
+<!--{include file="common/header.html"}-->
+<div class="page">
+  <div class="con">
+    <div class="con_left wt7">
+      <div class="bd_list">
+        <ul>
+          <li><a href="?tg=/vip/index"><!--{lang_cp str='vipinfo'}--></a><span></span></li>
+          <li class="current"><a href="?tg=/vip/shoplist"><!--{lang_cp str='myorder'}--></a> <span></span> </li>
+          <li><a href="?tg=/vip/delshoplist"><!--{lang_cp str='delorder'}--></a> <span></span> </li>
+          <li><a href="?tg=/vip/addresslist"><!--{lang_cp str='shouaddress'}--></a> <span></span> </li>
+          <li><a href="?tg=/vip/updatematerial"><!--{lang_cp str='updatemyinfo'}--></a><span></span></li>
+          <li><a href="?tg=/vip/index/logstate/logout"><!--{lang_cp str='logout'}--></a> <span></span></li>
+        </ul>
+      </div>
+      <div class="con_leftop"> </div>
+      <div class="con_leftom" style="position:relative;">
+        <p style="line-height:25px;"><a href="?tg=/vip/index"><!--{lang_cp str='vipcenterdefaultpage'}--></a> - <!--{lang_cp str='myvipinfo'}--></p>
+		<p class="filter"><!--{lang_cp str='category'}-->: <a href="?tg=/vip/shoplist"><!--{lang_cp str='all'}--></a>&nbsp;<a href="?tg=/vip/shoplist/order_state/0"><!--{lang_cp str='weifukuan'}--></a>&nbsp;<a href="?tg=/vip/shoplist/order_state/1"><!--{lang_cp str='yifukuan'}--></a></p>
+        <div class="box">
+		  <table width="650" border="0" cellspacing="0" cellpadding="0" class="zl">
+            <tr class="fc">
+              <td><!--{lang_cp str='tuangouxiangmu'}--></td>
+              <td width="40"><!--{lang_cp str='shuliang'}--></td>
+              <td width="80"><!--{lang_cp str='zongjia'}--></td>
+			  <td width="80"><!--{lang_cp str='orderstate'}--></td>
+			  <td width="150"><!--{lang_cp str='operate'}--></td>
+            </tr>
+	<!--{section name=l loop=$shoplist}-->			
+            <tr class="bg">
+              <td class="price"><a href="/"><img src="uploadfiles/<!--{$shoplist[l].groupon_pic}-->"/></a><a href="#" class="a_link" onclick="return false;"><!--{$shoplist[l].groupon_shop_name}--></a></td>
+              <td width="40">1</td>
+              <td width="80">¥<!--{$shoplist[l].groupon_present_price}--></td>
+			  <td width="80"><!--{if $shoplist[l].order_state eq 1}--><!--{lang_cp str='yifukuan'}--><!--{else}--><!--{lang_cp str='weifukuan'}-->(<a href="?tg=/buy/pay/order_id/<!--{$shoplist[l].order_id}-->"><!--{lang_cp str='dianjifukuan'}--></a>)<!--{/if}--></td>
+
+			  <td width="150"><a href="?tg=/vip/shoplist/id/<!--{$shoplist[l].id}-->"><!--{lang_cp str='del'}--></a></td>
+            </tr>
+	<!--{/section}-->			
+          </table>
+		</div>
+      
+      </div>
+      <div class="con_lefter"> </div>
+    </div>
+  </div>
+</div>
+<div class="clera"></div>
+<div style=" position:relative;">
+<!--底部-->
+
+<!--{include file="common/footer.html"}-->
+</body>
+</html>

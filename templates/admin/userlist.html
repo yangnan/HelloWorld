@@ -1,0 +1,128 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+<script type="text/javascript">
+<!--
+
+$(document).ready(function(){
+$("#theform").validate();
+});
+
+//-->
+</script>
+</head>
+<body>
+<form method="post" action="" name="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="40%" ><h2>
+          <!--{lang_cp str="list"}-->
+        </h2></td>
+      <td width="37%" >
+	  
+	  	 <!--{lang_cp str="username"}-->:<input name="username" type="text">
+	  	<input name="submit" type="submit" value='<!--{lang_cp str="search"}-->'>
+	  
+	  </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="biaoti bg">
+      <td width="6%"><div align="center">ID</div></td>
+	  <td width="6%"><div align="center">
+	    <!--{lang_cp str="invite_id"}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+        <!--{lang_cp str="email"}-->
+      </div></td>
+      <td width="8%"><div align="center">
+        <!--{lang_cp str="username"}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+	    <!--{lang_cp str="register_ip"}-->
+      </div></td>
+      <td width="10%"><div align="center">
+        <!--{lang_cp str="register_time"}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+	    <!--{lang_cp str="account_balance"}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+	    <!--{lang_cp str="integral"}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+	    <!--{lang_cp str="qq"}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+	    <!--{lang_cp str="telephone"}-->
+      </div></td>
+      <td width="22%"><div align="center">
+        <!--{lang_cp str="operate"}-->
+      </div></td>
+    </tr>
+    <!--{section name=loop loop=$arr}-->
+    <tr class="biaoti">
+      <td width="6%"><div align="center">
+        <!--{$arr[loop].id}-->
+      </div></td>
+	  <td width="6%"><div align="center">
+	    <!--{$arr[loop].invite_id}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+        <!--{$arr[loop].users_email}-->
+      </div></td>
+      <td width="8%"><div align="center">
+        <!--{$arr[loop].users_realname}-->
+      </div></td>
+      <td width="8%"><div align="center">
+        <!--{ipto str=$arr[loop].users_regip}-->
+      </div></td>
+      <td width="10%"><div align="center">
+        <!--{$arr[loop].users_regtime|date_format:"Y-m-d h:i"}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+	    <!--{$arr[loop].users_money}-->
+      </div></td>
+      <td width="8%"><div align="center">
+        <!--{$arr[loop].users_integrate}-->
+      </div></td>
+	  <td width="8%"><div align="center">
+	    <!--{$arr[loop].users_qq}-->
+      </div></td>
+      <td width="8%"><div align="center">
+        <!--{$arr[loop].users_phone}-->
+      </div></td>
+      <td width="22%">
+	    <div align="center"><a href='./admin.php?tg=/userdetails/id/<!--{$arr[loop].id}-->'>
+          <!--{lang_cp str="details"}-->
+	      </a>  / 
+	      <a href='./admin.php?tg=/useredit/id/<!--{$arr[loop].id}-->'>
+          <!--{lang_cp str="editor"}-->
+          </a>  / 
+	      <a onClick="return confirm('<!--{lang_cp str="confirm_delete"}-->')" href='./admin.php?tg=/usersdelete/id/
+          <!--{$arr[loop].id}-->
+          '>
+          <!--{lang_cp str="del"}-->
+            </a>  / 
+	      <a href='./admin.php?tg=/usersprepaid/id/<!--{$arr[loop].id}-->'>
+          <!--{lang_cp str="prepaid_phone"}-->
+        </a></div></td>
+    </tr>
+    <!--{/section}-->
+    <tr>
+      <td colspan="4">
+        
+        <div align="left">
+          <!--{page2html str=$pageList}-->
+        </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+</head>
+<body>
+<form method="post" action="" name="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2>
+          <!--{lang_cp str="list"}-->
+        </h2></td>
+      <td width="23%" >
+	  <a href="./admin.php?tg=/adminadd/"><!--{lang_cp str="add"}--></a>
+	  
+	  </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="biaoti bg">
+      <td width="8%">ID</td>
+      <td width="10%"><!--{lang_cp str="username"}--></td>
+	  <td width="10%"><!--{lang_cp str="register_ip"}--></td>
+      <td width="10%"><!--{lang_cp str="register_time"}--></td>
+	  <td width="10%"><!--{lang_cp str="last_login_ip"}--></td>
+	  <td width="10%"><!--{lang_cp str="last_login_time"}--></td>
+	  <td width="10%"><!--{lang_cp str="level"}--></td>
+      <td width="22%"><!--{lang_cp str="operate"}--></td>
+    </tr>
+    <!--{section name=loop loop=$arr_admin}-->
+    <tr class="biaoti">
+      <td width="8%"><!--{$arr_admin[loop].id}--></td>
+      <td width="10%"><!--{$arr_admin[loop].admin_name}--></td>
+      <td width="10%"><!--{$arr_admin[loop].admin_regip}--></td>
+      <td width="10%"><!--{$arr_admin[loop].admin_regtime|date_format:"Y-m-d H:i:s"}--></td>
+	  <td width="10%"><!--{$arr_admin[loop].admin_lastip}--></td>
+      <td width="10%"><!--{$arr_admin[loop].admin_lasttime|date_format:"Y-m-d H:i:s"}--></td>
+	  <!--{if $arr_admin[loop].level==1}-->
+	  <td width="10%"><!--{lang_cp str="super_admin"}--></td>
+	  <!--{else}-->
+	  <td width="10%"><!--{lang_cp str="general_manager"}--></td>
+	  <!--{/if}-->
+      <td width="22%">
+	  <!--{if $arr_admin[loop].level==1}-->
+	 <a href='./admin.php?tg=/adminedit/id/<!--{$arr_admin[loop].id}-->'><!--{lang_cp str="editor"}--></a>
+	  <!--{elseif $arr_admin[loop].id==$uid}-->
+	  <a href='./admin.php?tg=/adminedit/id/<!--{$arr_admin[loop].id}-->'>
+	  <!--{lang_cp str="editor"}--></a>
+	  <!--{else}-->
+	   <a href='./admin.php?tg=/adminedit/id/<!--{$arr_admin[loop].id}-->'>
+	  <!--{lang_cp str="editor"}--></a>  / 
+	  <a onClick="return confirm('<!--{lang_cp str="confirm_delete"}-->')" href='./admin.php?tg=/admindelete/id/<!--{$arr_admin[loop].id}-->'>
+        <!--{lang_cp str="del"}-->
+      </a>
+	  <!--{/if}-->
+	  </td>
+    </tr>
+    <!--{/section}-->
+    <tr>
+      <td colspan="4">
+        
+        <div align="left">
+          <!--{page2html str=$pageList}-->
+        </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

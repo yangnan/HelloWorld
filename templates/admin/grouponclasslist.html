@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+</head>
+<body>
+<form method="post" action="" name="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="40%" ><h2>
+          <!--{lang_cp str="list"}-->
+        </h2></td>
+      
+	  <td width="40%" ><a href="./admin.php?tg=/grouponclassadd/"><!--{lang_cp str="add"}--></a> </td>
+    </tr>
+	
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr class="biaoti bg">
+      <td width="8%"><div align="center">ID</div></td>
+	  <td width="14%"><div align="center">
+        <!--{lang_cp str="category"}-->
+      </div></td>
+      <td width="14%"><div align="center">
+        <!--{lang_cp str="operate"}-->
+      </div></td>
+    </tr>
+    <!--{section name=loop loop=$arr_think}-->
+    <tr class="biaoti">
+      <td width="8%"><div align="center">
+        <!--{$arr_think[loop].id}-->
+      </div></td>
+      <td width="14%"><div align="center">
+        <!--{$arr_think[loop].class_name}-->
+      </div></td>  
+      
+	  <td width="22%">
+	    <div align="center">
+	      
+	      <a href='./admin.php?tg=/grouponclassedit/id/<!--{$arr_think[loop].id}-->'><!--{lang_cp str="editor"}--></a>  / 
+	      <a onClick="return confirm('<!--{lang_cp str="confirm_delete"}-->')" href='./admin.php?tg=/grouponclassdelete/id/<!--{$arr_think[loop].id}-->'>          <!--{lang_cp str="del"}-->
+          </a> 
+		</div>
+	  </td>
+    </tr>
+    <!--{/section}-->
+    <tr>
+      <td colspan="4">
+        
+        <div align="left">
+          <!--{page2html str=$pageList}-->
+        </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

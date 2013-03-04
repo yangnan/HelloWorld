@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>网站相关管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+</head>
+<body>
+<form method="post" action="" name="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="40%" ><h2>
+          <!--{lang_cp str="list"}-->
+        </h2></td>
+    </tr>
+	
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="biaoge">
+      <td width="20%">ID</td>
+      <td width="40%"><!--{lang_cp str="category"}--><!--{lang_cp str="name"}--></td>
+      <td width="40%"><!--{lang_cp str="operate"}--></td>
+    </tr>
+    <!--{section name=loop loop=$siterelatedlistArr}-->
+    <tr class="biaoge">
+      <td width="20%"><!--{$siterelatedlistArr[loop].id}--></td>
+	  <td width="40%"><!--{$siterelatedlistArr[loop].class_name}--></td>
+      <td width="40%">
+	  	<a href='./admin.php?tg=/siterelatededit/id/<!--{$siterelatedlistArr[loop].id}-->'><!--{lang_cp str="editor"}--></a>
+		<a onClick="return confirm('<!--{lang_cp str="confirm_delete"}-->')" href='./admin.php?tg=/siterelateddelete/id/<!--{$siterelatedlistArr[loop].id}-->'><!--{lang_cp str="del"}--></a>
+		<a href='./admin.php?tg=/inventorylist/id/<!--{$siterelatedlistArr[loop].id}-->'><!--{lang_cp str="view"}--></a>
+	  </td>
+    </tr>
+    <!--{/section}-->
+    <tr>
+      <td colspan="4"><!--{page2html str=$pager}--></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+

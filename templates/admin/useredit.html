@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+<script type="text/javascript">
+<!--
+
+$(document).ready(function(){
+$("#theform").validate();
+});
+
+//-->
+</script>
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data" name="theform" id="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2><!--{lang_cp str="modify"}--></h2></td>
+      <td width="23%" ><a href="./admin.php?tg=/userlist/"><!--{lang_cp str="list"}--></a></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height="20" class="biaoge"><!--{lang_cp str="email"}--></td>
+      <td><input name="user_email" type="text" class="required" id="user_email" size="55" value="<!--{$arr_sel.users_email}-->"></td>
+    </tr>
+    <tr>
+      <td height="20" class="biaoge"><!--{lang_cp str="username"}--></td>
+      <td><input name="username" type="text" class="required" id="username" size="55" value="<!--{$arr_sel.users_realname}-->"></td>
+    </tr>
+    <tr>
+      <td height="20" valign="middle" class="biaoge"><!--{lang_cp str="password"}--></td>
+      <td><input type="text" name="password" class="required" id="password" size="55" value="<!--{$arr_sel.users_password}-->"></td>
+    </tr>
+	<tr>
+      <td height="20" class="biaoge"><!--{lang_cp str="account_balance"}--></td>
+      <td><input name="users_money" type="text" class="required" id="users_money" size="55" value="<!--{$arr_sel.users_money}-->"></td>
+    </tr>
+    <tr>
+      <td height="20" valign="middle" class="biaoge"><!--{lang_cp str="integral"}--></td>
+      <td><input type="text" name="users_integrate" class="required" id="users_integrate" size="55" value="<!--{$arr_sel.users_integrate}-->"></td>
+    </tr>
+	<tr>
+      <td height="20" valign="middle" class="biaoge"><!--{lang_cp str="qq"}--></td>
+      <td><input type="text" name="qq" class="required" id="qq" size="55" value="<!--{$arr_sel.users_qq}-->"></td>
+    </tr>
+	<tr>
+      <td height="20" valign="middle" class="biaoge"><!--{lang_cp str="telephone"}--></td>
+      <td><input type="text" name="telephone" class="required" id="telephone" size="55" value="<!--{$arr_sel.users_phone}-->"></td>
+    </tr>
+	<tr>
+      <td height="52" valign="top" class="biaoge">&nbsp;</td>
+      <td align="left" valign="middle"><input type="submit" id="submit" name="Submit" value="<!--{lang_cp str='modify'}-->">
+        </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

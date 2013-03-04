@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+</head>
+<body>
+<form method="post" action="" name="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="biaoti bg">
+      <td width="13%"><div align="center">ID</div></td>
+      <td width="13%"><div align="center">
+        <!--{lang_cp str="tuangouxiangmu"}-->
+      </div></td>
+	  <td width="13%"><div align="center">
+	    <!--{lang_cp str="username"}-->
+      </div></td>
+      <td width="13%"><div align="center">
+        <!--{lang_cp str="shuliang"}-->
+      </div></td>
+	  <td width="10%"><div align="center">
+	    <!--{lang_cp str="amount"}-->
+      </div></td>
+	  <td width="13%"><div align="center">
+	    <!--{lang_cp str="date_time"}-->
+      </div></td>
+	  <td width="25%"><div align="center">
+	    <!--{lang_cp str="operate"}-->
+      </div></td>	  
+    </tr>
+    <!--{section name=loop loop=$arr_issued}-->
+    <tr class="biaoti">
+      <td width="13%"><div align="center">
+        <!--{$arr_issued[loop].id}-->
+      </div></td>
+      <td width="13%"><div align="center">
+        <!--{$arr_issued[loop].shopname.groupon_shop_name}-->
+      </div></td>
+      <td width="13%"><div align="center">
+        <!--{$arr_issued[loop].uname.users_realname}-->
+      </div></td>
+      <td width="13%"><div align="center">
+        <!--{$arr_issued[loop].order_num}-->
+      </div></td>
+      <td width="10%"><div align="center">
+        <!--{$arr_issued[loop].shopname.groupon_present_price}-->
+      </div></td>	  
+	  <td width="13%"><div align="center">
+	    <!--{$arr_issued[loop].order_pub_time|date_format:"Y-m-d"}-->
+      </div></td>
+	  <td width="25%"><div align="center">
+	    <span><a href="admin.php?tg=/orderinfo/id/<!--{$arr_issued[loop].id}-->">查看</a></span> <span id="send"><!--{if $arr_issued[loop].product_state eq 1}-->已发货<!--{else}--><a href="admin.php?tg=/sendproduct/id/<!--{$arr_issued[loop].id}-->" onClick='$("#send").html("已发货")'>发货</a><!--{/if}--></span> <span><a href="admin.php?tg=/sendproduct/operation/del/id/<!--{$arr_issued[loop].id}-->" id="del">删除</a></span>
+      </div></td>	  
+    </tr>
+    <!--{/section}-->
+    <tr>
+      <td colspan="4">
+        
+        <div align="left">
+		<!--{page2html str=$pageList}-->
+        </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

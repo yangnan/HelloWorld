@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>团购网</title>
+<link rel="stylesheet" type="text/css" href="<!--{getstaticpath}-->style/style.css" />
+</head>
+<body>
+<!--头部-->
+<!--{include file="common/header.html"}-->
+<div class="page">
+  <div class="con">
+    <div class="con_left wt7">
+      <div class="bd_list">
+        <ul>
+          <li><a href="?tg=/vip/index"><!--{lang_cp str='vipinfo'}--></a><span></span></li>
+          <li><a href="?tg=/vip/shoplist"><!--{lang_cp str='myorder'}--></a> <span></span> </li>
+          <li><a href="?tg=/vip/delshoplist"><!--{lang_cp str='delorder'}--></a> <span></span> </li>
+          <li class="current"><a href="?tg=/vip/addresslist"><!--{lang_cp str='shouaddress'}--></a> <span></span> </li>
+          <li><a href="?tg=/vip/updatematerial"><!--{lang_cp str='updatemyinfo'}--></a><span></span></li>
+          <li><a href="?tg=/vip/index/logstate/logout"><!--{lang_cp str='logout'}--></a> <span></span></li>
+        </ul>
+      </div>
+      <div class="con_leftop"> </div>
+      <div class="con_leftom" style="position:relative;">
+        <p style="line-height:25px;"><a href="?tg=/vip/index"><!--{lang_cp str='vipcenterdefaultpage'}--></a> - <!--{lang_cp str='myvipinfo'}--></p>
+        <!--收货地址薄 start-->
+        <div class="box">
+          <table width="600" border="0" cellspacing="0" cellpadding="0" class="zl">
+            <tr class="fc">
+              <td><!--{lang_cp str='shouhuoren'}--></td>
+              <td><!--{lang_cp str='shouaddress'}--></td>
+              <td><!--{lang_cp str='phone'}--></td>
+			  <td>操作</td>
+            </tr>
+			<!--{section name=loop loop=$uAddress}-->
+            <tr class="bg">
+              <td><!--{$uAddress[loop].users_consignee}--></td>
+              <td><!--{$uAddress[loop].users_street}--></td>
+              <td><!--{$uAddress[loop].users_phone}--></td>
+			  <td><a href="?tg=/vip/addresslist/del/<!--{$uAddress[loop].id}-->">删除</a></td>
+            </tr>
+			<!--{/section}-->
+          </table>
+          <table border="0" class="form_table">
+<form id="form1" name="form1" method="post" action="">		  
+            <tbody>
+              <tr>
+                <td><div align="left"><!--{lang_cp str='quyu'}-->：</div></td>
+                <td><span id="province_setting">
+                  <select id="province" name="province" onchange="getCity(this.options[this.selectedIndex].value)" class="f-city">
+                  </select>
+                  </span> <!--{lang_cp str='add_province'}-->:
+                  <select name="citylist" id="citylist">
+                    <option value="0"><!--{lang_cp str='beijing'}--></option>
+                  </select>
+                  <!--{lang_cp str='city'}--> </td>
+              </tr>
+              <tr>
+                <td><div align="left"><!--{lang_cp str='jiedaodizhi'}-->:</div></td>
+                <td><div align="left">
+                    <input name="address" type="text">
+                  </div></td>
+              </tr>
+              <tr>
+                <td><div align="left"><!--{lang_cp str='zipcode'}-->:</div></td>
+                <td><div align="left">
+                    <input name="zip" type="text">
+                  </div></td>
+              </tr>
+              <tr>
+                <td><div align="left"><!--{lang_cp str='mobile'}-->:</div></td>
+                <td><div align="left">
+                    <input name="phone" type="text">
+                  </div></td>
+              </tr>
+              <tr>
+                <td><div align="left"><!--{lang_cp str='phone'}-->:</div></td>
+                <td><div align="left">
+                    <input name="telephone" type="text">
+                  </div></td>
+              </tr>
+              <tr>
+                <td><div align="left"><!--{lang_cp str='shouhuoren'}-->:</div></td>
+                <td><div align="left">
+                    <input name="consignee" type="text">
+                  </div></td>
+              </tr>
+              <tr>
+                <td><div align="left"></div></td>
+                <td><div align="left">
+                    <input name="submit" value="<!--{lang_cp str='submit'}-->" type="submit">
+                  </div></td>
+              </tr>
+            </tbody>
+</form>			
+          </table>
+          <p>&nbsp;</p>
+        </div>
+        <!--收货地址薄 end-->
+      </div>
+      <div class="con_lefter"> </div>
+    </div>
+  </div>
+</div>
+<div class="clera"></div>
+<script type="text/javascript">
+var userads = "<!--{$uAddress}-->";
+if(userads)
+{
+    loadArray();//调用城市信息
+}
+</script>
+<div style=" position:relative;">
+<!--底部-->
+<!--{include file="common/footer.html"}-->
+</body>
+</html>

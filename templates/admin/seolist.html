@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+</head>
+<body>
+<form method="post" action="" name="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2>
+          <!--{lang_cp str="list"}-->
+        </h2></td>
+      <td width="23%" >
+	  <a href="./admin.php?tg=/seoadd/"><!--{lang_cp str="add"}--></a>
+	  </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="biaoti bg">
+      <td width="8%"><div align="center">ID</div></td>
+      <td width="10%"><div align="center">
+        <!--{lang_cp str="page_title"}-->
+      </div></td>
+	  <td width="10%"><div align="center">
+	    <!--{lang_cp str="keywords"}-->
+      </div></td>
+      <td width="10%"><div align="center">
+        <!--{lang_cp str="page_position"}-->
+      </div></td>
+	  <td width="10%"><div align="center">
+	    <!--{lang_cp str="pubtime"}-->
+      </div></td>
+      <td width="22%"><div align="center">
+        <!--{lang_cp str="operate"}-->
+      </div></td>
+    </tr>
+    <!--{section name=loop loop=$arr_seo}-->
+    <tr class="biaoti">
+      <td width="8%"><div align="center">
+        <!--{$arr_seo[loop].id}-->
+      </div></td>
+	  <td width="10%"><div align="center">
+	    <!--{$arr_seo[loop].seo_title}-->
+      </div></td>
+      <td width="10%"><div align="center">
+         <!--{$arr_seo[loop].seo_keywords}-->
+      </div></td>
+	  
+      <td width="10%"><div align="center">
+         <!--{$arr_seo[loop].seo_page_address}-->
+      </div></td>
+      <td width="10%"><div align="center">
+         <!--{$arr_seo[loop].seo_pubtime|date_format:"Y-m-d"}-->
+      </div></td>
+      <td width="22%">
+	    <div align="center">
+		<a href='./admin.php?tg=/seoedit/id/<!--{$arr_seo[loop].id}-->'>
+		<!--{lang_cp str="editor"}--></a>  / 
+		<a onClick="return confirm('<!--{lang_cp str="confirm_delete"}-->')" href='./admin.php?tg=/seodelete/id/<!--{$arr_seo[loop].id}-->'>
+        <!--{lang_cp str="del"}--></a>    
+		
+		</div></td>
+    </tr>
+    <!--{/section}-->
+    <tr>
+      <td colspan="4">
+        
+        <div align="left">
+          <!--{page2html str=$pageList}-->
+        </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

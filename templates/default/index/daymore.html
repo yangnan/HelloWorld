@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Description" content="<!--{$seo.seo_descript}-->">
+<meta name="Keywords" content="<!--{$seo.seo_keywords}-->">
+<title><!--{$seo.seo_title}--></title>
+<link rel="stylesheet" type="text/css" href="<!--{getstaticpath}-->style/style.css" />
+</head>
+<body>
+<!--头部-->
+<!--{include file="common/header.html"}-->
+    <script src="static/js/popup_layer.js" type="text/javascript" language="javascript"></script>
+    <script language="javascript">
+		$(document).ready(function() {
+			var t4 =  new PopupLayer({trigger:"#ele4",popupBlk:"#blk4",closeBtn:"#close4",useFx:true});
+			t4.doEffects = function(way){
+				way == "open"?this.popupLayer.slideDown("slow"):this.popupLayer.slideUp("slow");
+			};
+
+		});
+	</script>
+<div id="bannerset">
+    	<div id="blk4" class="banner">
+            <ul>
+            <li class="bleft"></li>
+            <li id="bcenter" class="bcenter"></li>
+            <li class="bright"></li>
+            <span class="closebtn"><a href="javascript:void(0)" id="close4">关闭</a></span>
+            </ul>
+        </div>
+</div>
+<div class="page">
+        <div class="con">
+        	<div class="con_left">
+				
+				
+				
+<!--{section name=loop loop=$getGrouponDataList}-->				
+<div class="item<!--{if $smarty.section.loop.index%2 == 0}--> odd<!--{/if}-->">
+	<h1><a href="?tg=/index/details/id/<!--{$getGrouponDataList[loop].id}-->"><!--{$getGrouponDataList[loop].groupon_title}--></a></h1><div class="cover"><a class="new pngfix" title="点击查看详情" href="?tg=/index/details/id/<!--{$getGrouponDataList[loop].id}-->" rel="nofollow"></a><a title="<!--{$getGrouponDataList[loop].groupon_title}-->" href="?tg=/index/details/id/<!--{$getGrouponDataList[loop].id}-->" rel="nofollow"><img src="uploadfiles/<!--{$getGrouponDataList[loop].groupon_pic}-->" title="点击查看详情" alt="<!--{$getGrouponDataList[loop].groupon_title}-->"></a>
+	</div>
+	<div class="inner">
+		<div class="deal-buy">
+			<div class="deal-price-tag-open"></div><div class="deal-price-tag"></div>
+			<p class="deal-price"><strong>¥ <!--{$getGrouponDataList[loop].groupon_present_price}--></strong><span><a href="?tg=/index/details/id/<!--{$getGrouponDataList[loop].id}-->"" rel="nofollow"></a></span> </p>
+		</div>
+		<table class="discount">
+		<tbody><tr>
+			<th>现价</th>
+			<td class="price"><strong>¥ <!--{$getGrouponDataList[loop].groupon_present_price}--></strong></td>
+			</tr>
+			<tr>
+			<th>原价</th>
+			<td><del><strong>¥<!--{$getGrouponDataList[loop].groupon_prime_price}--></strong></del></td>
+			</tr>
+			<tr>
+			<th>折扣</th>
+			<td><strong><!--{$getGrouponDataList[loop].zhekou}-->折</strong>
+			</td>
+			</tr>
+			</tbody>
+		</table>
+		<div diff="221118" id="deal-timeleft-167428" class="deal-box deal-timeleft deal-on">
+			<!--<ul><li><span>2</span>天</li><li><span>13</span>小时</li><li><span>20</span>分钟</li></ul>-->
+		</div>
+		<div id="deal-status-167428" class="deal-box deal-status deal-status-open">
+			<p class="deal-buy-tip-top"><strong><!--{$getGrouponDataList[loop].countnum}--></strong> 人已购买</p>
+		</div>
+	</div>
+</div>				
+<!--{/section}-->							
+				
+				
+			
+			</div>
+			<!--右部-->
+			<!--{include file="common/right.html"}-->            
+        </div>
+</div>
+<div class="clera"></div>
+<!--底部-->
+<!--{include file="common/footer.html"}-->
+<script type="text/javascript" src="common/ip.php?url=<!--{geturl str='2'}-->&refr=<!--{geturl str='1'}-->"></script>
+</body>
+</html>

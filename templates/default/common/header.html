@@ -1,0 +1,98 @@
+<link rel="shortcut icon" href="<!--{getstaticpath}-->/images/favicon.ico?v=3.5">
+<script type="text/javascript" src="static/js/jquery.js"></script>
+<script type="text/javascript" src="static/js/common.js"></script>
+<script type="text/javascript" src="static/js/loaderExecute.js"></script>
+<script type="text/javascript" src="static/js/city.js"></script>
+<!-- ie6图片背景透明 -->
+<script language="javascript"> 
+function correctPNG()
+{
+for(var i=0; i<document.images.length; i++)
+{
+var img = document.images[i]
+var imgName = img.src.toUpperCase()
+if (imgName.substring(imgName.length-3, imgName.length) == "PNG")
+{
+   var imgID = (img.id) ? "id='" + img.id + "' " : ""
+   var imgClass = (img.className) ? "class='" + img.className + "' " : ""
+   var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' "
+   var imgStyle = "display:inline-block;" + img.style.cssText
+   if (img.align == "left") imgStyle = "float:left;" + imgStyle
+   if (img.align == "right") imgStyle = "float:right;" + imgStyle
+   if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle  
+   var strNewHTML = "<span " + imgID + imgClass + imgTitle
+   + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";"
++ "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"
+   + "(src=\'" + img.src + "\', sizingMethod='scale');\"></span>"
+   img.outerHTML = strNewHTML
+   i = i-1
+}
+}
+}
+
+if (window.attachEvent) { 
+	window.attachEvent("onload", correctPNG);
+} else if (window.addEventListener) { 
+	window.addEventListener("onload", correctPNG, false);   
+}    
+</script>
+<!-- ie6图片背景透明结束 -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#email").focus(function(){ 
+	  $("#email").attr("value",""); 
+	});  
+   
+	$("#rss").click(function(){
+        //$("#email").val() == "";
+        var email = $("#email").val();
+		  
+        if(email == "")
+        {
+            alert("<!--{language_message str='not_null_email'}-->");
+            $("#email").focus(); 
+            return false;
+        }else if(!$("#email").val().match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)){
+     		alert("<!--{language_message str='effective_email'}-->");
+     		$("#email").focus();
+	 		return false;
+   		}
+		$.get("?tg=/index/rss/email/"+email,function(data){                
+                alert(data);
+            });
+	});
+	$("#rsstop").click(function(){
+        //$("#email").val() == "";
+        var emailtop = $("#emailtop").val();
+		  
+        if(emailtop == "")
+        {
+            alert("<!--{language_message str='not_null_email'}-->");
+            $("#emailtop").focus(); 
+            return false;
+        }else if(!$("#emailtop").val().match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)){
+     		alert("<!--{language_message str='effective_email'}-->");
+     		$("#emailtop").focus();
+	 		return false;
+   		}
+		$.get("?tg=/index/rss/email/"+emailtop,function(data){                
+                alert(data);
+            });
+	});
+ });
+</script>
+<div class="top">
+  <div class="logo"><img src="uploadfiles/<!--{getsysinfo str='logo'}-->" /></div>
+  <div class="qgz"><span class="qz_city"><!--{if $smarty.get.city == ''}--><!--{getonesession str="cityname"}--><!--{else}--><!--{$smarty.session.cityname}--><!--{/if}--></span><br /><a href="#" id="tabCity" onclick="return false;">[<!--{lang_cp str='tabcity'}-->]</a></div>
+  <div class="email">
+      <input id="emailtop" name="emailtop" type="text" class="index_text" />
+      <input id="rsstop" name="rsstop" type="button" class="but" value="<!--{language_cp str="emailsend"}-->" />
+  </div>
+</div>
+<!--{nav}-->
+        <li class="nav_li">&nbsp;</li>
+<!--{getsession}-->
+                                                                  
+    </ul>
+</div>

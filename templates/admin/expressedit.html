@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<form action="" method="post" enctype="multipart/form-data" name="theform">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+	<tr height="30">
+      <td align="right" class="biaoge"><!--{lang_cp str="express"}--><!--{lang_cp str="name"}--></td>
+      <td><input type="text" name="express_name" class="required" id="express_name" size="35" value="<!--{$dateArr.express_name}-->"></td>
+    </tr>
+	<tr height="30">
+      <td align="right" class="biaoge"><!--{lang_cp str="express"}--><!--{lang_cp str="address"}--></td>
+      <td><input type="text" name="express_address" class="required" id="express_address" size="35" value="<!--{$dateArr.express_address}-->"></td>
+    </tr>
+	<tr height="30">
+      <td align="right" class="biaoge"><!--{lang_cp str="express"}--><!--{lang_cp str="phone"}--></td>
+      <td><input type="text" id="express_phone" name="express_phone" class="required" size="35" value="<!--{$dateArr.express_phone}-->"></td>
+    </tr>
+	<tr height="30">
+      <td align="right" class="biaoge"><!--{lang_cp str="express"}--><!--{lang_cp str="mobile"}--></td>
+      <td><input type="text" id="express_mobile" name="express_mobile" class="required" size="35"  value="<!--{$dateArr.express_mobile}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="top" class="biaoge">&nbsp;</td>
+      <td align="left" valign="middle">
+	  	<input type="submit" id="submit" name="Submit" value="<!--{lang_cp str='submit'}-->" />
+	  </td>
+    </tr>
+	
+  </table>
+</form>
+</body>
+</html>

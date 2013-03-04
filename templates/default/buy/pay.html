@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Description" content="<!--{$seo.seo_descript}-->">
+<meta name="Keywords" content="<!--{$seo.seo_keywords}-->">
+<title><!--{$seo.seo_title}--></title>
+<link rel="stylesheet" type="text/css" href="<!--{getstaticpath}-->style/style.css" />
+<link rel="stylesheet" type="text/css" href="<!--{getstaticpath}-->style/container.css" />
+<link rel="stylesheet" type="text/css" href="<!--{getstaticpath}-->style/tg.css" />
+</head>
+<body>
+<!--头部-->
+<!--{include file="common/header.html"}-->
+<div class="page">
+
+
+<div class="yui-panel-container shadow" id="order-pay-dialog_c" style="display:none;visibility: visible; left: 458px; top: 185px; z-index: 7;"><div id="order-pay-dialog" class="yui-module yui-overlay yui-panel" style="visibility: inherit; width: 344px; height: 340px;" tabindex="0"><div class="bd" style="height: 338px;"><div class="order-pay-dialog-c"><h3><span class="close" id="order-pay-dialog-close"><!--{lang_cp str='closed'}--></span></h3><p class="info"><!--{lang_message str='buyreadone'}--></p><p class="notice"><!--{lang_message str='buyreadtwo'}--></p><p class="act"><input type="submit" value="<!--{lang_message str='buyreadfive'}-->" class="formbutton" id="order-pay-dialog-succ"> <input type="submit" value="<!--{lang_message str='buyreadfour'}-->" class="formbutton" id="order-pay-dialog-fail"></p><p class="retry"><a class="back" id="order-pay-dialog-back" href="javascript:void(0)">» <!--{lang_message str='buyreadthree'}--></a></p></div></div></div><div class="underlay"></div></div>
+
+  <div class="con">
+    <div class="con_left">
+      <div class="con_left01"> </div>
+      <div class="con_left02" style="position:relative;">
+        <h2><!--{lang_cp str='yourorder'}--></h2>
+		<form action="" method="post" onsubmit="return check_form();">
+        <div class="box">
+          <table class="order_table">
+            <tbody>
+              <tr>
+                <th class="buy_desc"><!--{lang_cp str='app'}--></th>
+                <th class="buy_qt"><!--{lang_cp str='shuliang'}--></th>
+                <th class="buy_multi"></th>
+                <th class="buy_price"><!--{lang_cp str='jiage'}--></th>
+                <th class="buy_equal"></th>
+                <th class="buy_total"><!--{lang_cp str='zongjia'}--></th>
+              </tr>
+              <tr>
+                <td class="buy_desc"><a target="_blank" href="?tg=/index/details/id/<!--{$shopdata.id}-->"><!--{$shopdata.groupon_title}--></a></td>
+                <td class="buy_qt"><!--{$shopdata.quantity}--></td>
+                <td class="buy_multi">*</td>
+                <td class="buy_price">
+					<span class="money">￥</span><span class="buy_price" id="buy_price"><!--{$shopdata.groupon_present_price}--></span>
+					<input type="hidden" name="price" id="price" value="<!--{$shopdata.groupon_present_price}-->"/>					</td>
+                <td class="buy_equal">=</td>
+                <td class="buy_total">
+					<span class="money">￥</span><span class="buy_total" id="buy_total"><!--{$shopdata.countprice}--></span>				</td>
+              </tr>
+              <tr class="order_total">
+                <td class="buy_desc"><strong><!--{lang_cp str='zonge'}--></strong></td>
+                <td class="buy_qt"></td>
+                <td class="buy_multi"></td>
+                <td class="buy_price"></td>
+                <td class="buy_equal">=</td>
+                <td class="buy_total"><span class="money">￥</span><strong class="total_t" id="total_t"><!--{$shopdata.countprice}--></strong></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="nbg"><!--{lang_cp str='youyue'}-->:</div>
+		  <div class="mt">
+			<!--{if $userinfo.users_money < $shopdata.countprice}-->
+		    <p><!--{lang_cp str='zhanghuyue'}-->：<strong>¥<!--{$userinfo.users_money}--></strong> <!--{lang_message str='buyreadsix'}--> <strong>¥<!--{$shopdata.changeMoney}--></strong>。<!--{lang_cp str='zhifufangshi'}-->：</p>
+		    <div>
+<!--{lang_message str='goumailiucheng'}-->
+		      <p><!--{lang_cp str='contacts'}-->：<!--{$contact.config_contactman}--></p>
+		      <p><!--{lang_cp str='phone'}-->：<!--{$contact.config_mobile}--></p>
+		      <p sizcache="7" sizset="23"><!--{lang_cp str='email'}-->：<a href="mailto:<!--{$contact.config_admin_email}-->"><!--{$contact.config_admin_email}--></a></p>
+		      <p><!--{lang_message str='chongzhiqita'}-->：<!--{$contact.config_contact}--></p>
+		      <p><!--{lang_cp str='address'}-->：<!--{lang_cp str='beijing'}--></p>
+<ul>
+<!--{section name=loop loop=$payinfo}-->
+<li>
+            <input type="radio" name="payinfo" value="<!--{$payinfo[loop].id}-->" />
+           <!--{$payinfo[loop].pay_name}--> 
+</li>
+<!--{/section}-->
+</ul>
+		      </div>
+<!--{/if}-->
+		  </div>
+          <div class="mt">
+            <input name="pay" type="button"  value="<!--{language_cp str='button_buy'}-->" class="btn" onclick="return paycurl();" />
+            <a href="" onclick="history.go(-1);return false;"><!--{lang_cp str='back'}-->  <!--{lang_cp str='updateorder'}--></a></div></p>
+        </div>
+		</form>
+      </div>
+      <div class="con_left03"> </div>
+    </div>
+  </div>
+</div>
+<div class="clera"></div>
+<!--底部-->
+<!--{include file="common/footer.html"}-->
+
+<script type="text/javascript">
+function paycurl()
+{
+	var strUrl;
+	strUrl = $('input[name="payinfo"]:checked').val();
+//传值给ajax,然后加载反馈的url,然后window open
+var successProcess=function(data){
+var target = "blank";
+window.open(data,target="blank");
+
+}
+var Request=new QueryString();
+$.ajax({
+url:"?tg=/buy/createpay/order_id/"+Request["order_id"]+"/payid/"+strUrl,
+cache:false,
+success:successProcess
+}); 
+//	window.open("?tg=/buy/createpay");
+
+}
+//确定付款是否成功
+function chkOrderState()
+{
+
+//传值给ajax,然后加载反馈的url,然后window open
+var isok = function(data)
+{
+if(data == 1)
+{
+	location="?tg=/vip/shoplist";
+}
+else if(data == 2){
+	location="?tg=/index/details";
+}
+}
+var Request=new QueryString();
+$.ajax({
+url:"?tg=/buy/createpay/type/chk",
+cache:false,
+success:isok
+}); 
+
+}
+
+
+
+
+$("#order-pay-dialog-succ").click(function()
+{
+chkOrderState();
+}
+);
+$("input[name=pay]").click(function(){
+$("#order-pay-dialog_c").show();
+});
+
+$("#order-pay-dialog-fail").click(function(){
+
+location="?tg=/index/details";
+});
+
+$("#order-pay-dialog-close").click(function()
+{
+closeDom("order-pay-dialog_c");
+});
+</script>
+
+</body>
+</html>

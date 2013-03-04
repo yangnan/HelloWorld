@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+<script type="text/javascript">
+<!--
+
+$(document).ready(function(){
+$("#theform").validate();
+});
+
+//-->
+</script>
+<style type="text/css">
+<!--
+.STYLE1 {color: #FF0000}
+-->
+</style>
+</head>
+<body>
+<form method="post" action="" name="theform" id="theform" >
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2>
+          <!--{lang_cp str="editor"}-->
+        </h2></td>
+      <td width="23%" >
+	  </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0">
+   <tr height="30">
+      <td  class="biaoge"><!--{lang_cp str="input"}--><!--{lang_cp str="template"}--><!--{lang_cp str="directory"}--><!--{lang_cp str="name"}--></td>
+    </tr>
+    <tr>
+      <td class="biaoge"><input type="text" name="style_name" value="" class="required"> 
+        &nbsp;<span class="STYLE1">模板目录是在&quot;当前网站根目录/templates&quot;下,default 为当前默认风格</span> </td>
+    </tr>
+	<tr height="30">
+      <td  class="biaoge"><!--{lang_cp str="input"}--><!--{lang_cp str="style_name"}--></td>
+    </tr>
+	<tr>
+      <td class="biaoge"><input type="text" name="directory" value="" class="required">
+      &nbsp;<span class="STYLE1">风格名称用于记录的导入记录,以方便管理</span></td>
+    </tr>
+	<tr height="30">
+      <td class="biaoge"><input name="submit" type="submit" id="submit" value="<!--{lang_cp str="submit"}-->"></td>
+    </tr>
+  </table>
+  </form>
+</body>
+</html>

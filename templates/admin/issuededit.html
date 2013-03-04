@@ -1,0 +1,282 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="static/js/ui.datepicker.css" type="text/css" media="screen"  charset="utf-8" />
+<!--{include file="common/common.html"}-->
+<script src="static/js/ui.datepicker.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/ui.datepicker-zh-CN.js" type="text/javascript" charset="utf-8"></script>	
+<script src="static/js/date.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+<!--
+
+$(document).ready(function(){
+$("#theform").validate();
+});
+
+//-->
+</script>
+<script type="text/javascript">
+<!--
+
+$(document).ready(function(){
+  var a=$("input[name='groupon_distribution_id'][checked]").val();
+   if(a==2){
+      $("#rebate").show();
+	  $("#express_company").hide();
+	  $("#express_fee").hide();
+	  $("#exemption").hide();
+         
+   }else{
+      $("#rebate").hide();
+	  $("#express_company").show();
+	  $("#express_fee").show();
+	  $("#exemption").show();
+   }
+  $("#express").click(function(){
+	  $("#rebate").hide();
+	  $("#express_company").show();
+	  $("#express_fee").show();
+	  $("#exemption").show();
+  });
+  $("#vouchers").click(function(){
+	  $("#rebate").show();
+	  $("#express_company").hide();
+	  $("#express_fee").hide();
+	  $("#exemption").hide();
+  });
+});
+
+//-->
+</script>
+<style type="text/css">
+<!--
+.STYLE1 {color: #c00}
+-->
+</style>
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data" name="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2><!--{lang_cp str="add"}--></h2></td>
+      <td width="23%" ><a href="./admin.php?tg=/issuedlist/"><!--{lang_cp str="list"}--></a></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr height="30">
+      <td class="biaoge"><!--{lang_cp str="category"}--></td>
+      <td>
+	  <select name="groupon_class_id">
+	    
+		<!--{section name=l loop=$issued}-->
+	    <option value="<!--{$issued[l].id}-->" <!--{if $issued[l].id==$finds.groupon_class_id}-->selected<!--{/if}-->><!--{$issued[l].class_name}--></option>
+	    <!--{/section}-->
+      </select>
+      </td>
+    </tr>
+    <tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="name"}--></td>
+      <td><input type="text" name="groupon_title" class="required" id="groupon_title" size="35" value="<!--{$finds.groupon_title}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="commodity_name"}--></td>
+      <td><input type="text" name="groupon_shop_name" class="required" id="groupon_shop_name" size="35" value="<!--{$finds.groupon_shop_name}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="city"}--></td>
+      <td>
+	  <select name="groupon_city_id">
+	    
+		<!--{section name=loop loop=$city}-->
+	    <option value="<!--{$city[loop].id}-->" <!--{if $city[loop].id==$finds.groupon_city_id}-->selected<!--{/if}-->><!--{$city[loop].city_name}--></option>
+		<!--{/section}-->
+      </select>
+	  <span style="color:#c00;padding-left:10px;">*请先在全局里添加城市</span>
+      </td>
+	</tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="business"}--></td>
+      <td>
+	  <select name="groupon_seller_id">
+	    
+		<!--{section name=ll loop=$business}-->
+	    <option value="<!--{$business[ll].id}-->" <!--{if $business[ll].id==$finds.groupon_seller_id}-->selected<!--{/if}-->><!--{$business[ll].seller_name}--></option>
+		<!--{/section}-->
+	  
+      </select>
+	  <span style="color:#c00;padding-left:10px;">*请先在商家管理中添加商家</span>
+      </td>
+	</tr>
+	<tr height="30">
+      <td height="20" valign="middle" class="biaoge"><!--{lang_cp str="distribution_information"}--></td>
+      <td><input name="groupon_distribution_id" type="radio" id="express" value="1" <!--{if $finds.groupon_distribution_id eq 1}-->checked<!--{/if}-->><!--{lang_cp str="express"}-->
+      <input type="radio" id="vouchers" name="groupon_distribution_id" value="2" <!--{if $finds.groupon_distribution_id eq 2}-->checked<!--{/if}-->><!--{lang_cp str="vouchers"}--></td>
+    </tr>
+	<tr height="30">
+      <td height="20" valign="middle" class="biaoge"></td>
+      <td id="express_company"><!--{lang_cp str="express"}-->:
+	  <select name="groupon_company_id">
+	  <!--{section name=expenses loop=$expenses}-->
+        <option value="<!--{$expenses[expenses].id}-->" <!--{if $expenses[expenses].id==$finds.groupon_company_id}-->selected<!--{/if}-->><!--{$expenses[expenses].express_name}--></option>
+	  <!--{/section}-->
+      </select></td>
+	  <td id="rebate"><!--{lang_cp str="rebate"}-->:<input type="text" name="groupon_rebate" value="<!--{$finds.groupon_rebate}-->"></td>
+	</tr>
+	<tr height="30" id="express_fee">
+      <td valign="middle" class="biaoge"></td>
+      <td><!--{lang_cp str="expenses"}-->:<input type="text" name="groupon_expenses" value="<!--{$finds.groupon_expenses}-->"></td>
+
+    </tr>
+	<tr height="30" id="exemption">
+      <td valign="middle" class="biaoge"></td>
+      <td><!--{lang_cp str="exemption"}-->:<input type="text" name="groupon_singular"  value="<!--{$finds.groupon_singular}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="original_price"}--></td>
+      <td><input type="text" name="groupon_prime_price" class="required" id="groupon_prime_price" size="35" value="<!--{$finds.groupon_prime_price}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="now_price"}--></td>
+      <td><input type="text" name="groupon_present_price" class="required" id="groupon_present_price" size="35" value="<!--{$finds.groupon_present_price}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="start_time"}--></td>
+      <td><input type="text" id="start_time" name="groupon_start_time" class="required" size="35" value="<!--{$finds.groupon_start_time|date_format:"Y-m-d"}-->" onClick="return Calendar('start_time','end_time');"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="end_time"}--></td>
+      <td><input type="text" id="end_time" name="groupon_end_time" class="required" size="35"  value="<!--{$finds.groupon_end_time|date_format:"Y-m-d"}-->" onClick="return Calendar('end_time');"></td>
+    </tr>
+	<tr height="30">
+	  <td valign="middle" class="biaoge">限制条件</td>
+	  <td><select name="groupon_stop">
+        <option value="1">只购买一次</option>
+		<option value="2">可以购买多次</option>
+      </select></td>
+    </tr>	
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="minimum_number"}--></td>
+      <td><input type="text" name="groupon_num" class="required" id="groupon_num" size="35" value="<!--{$finds.groupon_num}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="pictures"}--></td>
+      <td><input type="file" name="groupon_pic" class="required" id="groupon_pic" size="35" ></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"></td>
+      <td><!--{$img1}--></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="contacts"}--></td>
+      <td><input type="text" name="groupon_contact_name" class="required" id="groupon_contact_name" size="35" value="<!--{$finds.groupon_contact_name}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="m_phone"}--></td>
+      <td><input type="text" name="groupon_mobile_phone" class="required" id="groupon_mobile_phone" size="35" value="<!--{$finds.groupon_mobile_phone}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="telephone"}--></td>
+      <td><input type="text" name="groupon_telephone" class="required" id="groupon_telephone" size="35" value="<!--{$finds.groupon_telephone}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="email"}--></td>
+      <td><input type="text" name="groupon_email" class="required" id="groupon_email" size="35" value="<!--{$finds.groupon_email}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="msn"}--></td>
+      <td><input type="text" name="groupon_msn" class="required" id="groupon_msn" size="35" value="<!--{$finds.groupon_msn}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="qq"}--></td>
+      <td><input type="text" name="groupon_qq" class="required" id="groupon_qq" size="35" value="<!--{$finds.groupon_qq}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="business"}--><!--{lang_cp str="website"}--></td>
+      <td><input type="text" name="groupon_website" class="required" id="groupon_website" size="35" value="<!--{$finds.groupon_website}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="business"}--><!--{lang_cp str="address"}--></td>
+      <td><input type="text" name="groupon_address" class="required" id="groupon_address" size="35" value="<!--{$finds.groupon_address}-->"></td>
+    </tr>
+	<tr height="30">
+      <td valign="middle" class="biaoge"><!--{lang_cp str="home_show"}--></td>
+      <td>
+	  <select name="groupon_display_index">
+	    <option value="1" <!--{if $finds.groupon_display_index==1}-->selected<!--{/if}-->><!--{lang_cp str="yes"}--></option>
+	    <option value="2" <!--{if $finds.groupon_display_index==2}-->selected<!--{/if}-->><!--{lang_cp str="no"}--></option>
+      </select>
+      </td>
+	</tr>
+	<tr>
+      <td width="8%" height="214" valign="top" class="biaoge"><label>
+        <!--{lang_cp str="tip"}-->
+        </label></td>
+      <td valign="top" align="left">
+		<textarea name="groupon_tips" id="groupon_tips" style="display:none;"><!--{$finds.groupon_tips}--></textarea>
+		<iframe id="tgedit" name="tgedit" src="templates/admin/TGEditor/Edit/editor.htm?id=groupon_tips&ReadCookie=0" frameBorder="0" marginHeight="0" marginWidth="0" scrolling="No" width="300" height="100"></iframe>
+      </td>
+    </tr>
+	<tr>
+      <td width="8%" height="214" valign="top" class="biaoge"><label>
+        <!--{lang_cp str="details"}-->
+        </label></td>
+      <td valign="top" align="left">
+		<textarea name="groupon_content" id="groupon_content" style="display:none;"><!--{$finds.groupon_content}--></textarea>
+		<iframe id="tgedit" name="tgedit" src="templates/admin/TGEditor/Edit/editor.htm?id=groupon_content&ReadCookie=0" frameBorder="0" marginHeight="0" marginWidth="0" scrolling="No" width="500" height="300"></iframe>
+      </td>
+    </tr>
+	<tr>
+	<tr>
+      <td width="8%" height="214" valign="top" class="biaoge"><label>
+        <!--{lang_cp str="theysay"}-->
+        </label></td>
+      <td valign="top" align="left">
+		<iframe id="tgedit" name="tgedit" src="templates/admin/TGEditor/Edit/editor.htm?id=theysay&ReadCookie=0" frameBorder="0" marginHeight="0" marginWidth="0" scrolling="No" width="500" height="300"></iframe>
+		<textarea name="theysay" id="theysay" style="display:none;"><!--{$finds.theysay}--></textarea>        
+        </td>
+    </tr>  
+	<tr>
+      <td width="8%" height="214" valign="top" class="biaoge"><label>
+        <!--{lang_cp str="websitesay"}-->
+        </label></td>
+      <td valign="top" align="left">
+		<iframe id="tgedit" name="tgedit" src="templates/admin/TGEditor/Edit/editor.htm?id=websitesay&ReadCookie=0" frameBorder="0" marginHeight="0" marginWidth="0" scrolling="No" width="500" height="300"></iframe>
+		<textarea name="websitesay" id="websitesay" style="display:none;"><!--{$finds.websitesay}--></textarea>        
+        </td>
+    </tr>		    
+      <td valign="top" align="left">
+		<input name="allimg" type="hidden" value='<!--{$allimg}-->'>
+      </td>
+    </tr>
+	<tr height="30">
+	  <td valign="top" class="biaoge"><!--{lang_cp str="mapstatus"}--></td>
+	  <td align="left" valign="middle"><!--{lang_cp str="noview"}-->
+	    <input name="mapstatus" type="radio" value="2"<!--{if $finds.mapstatus eq 2}--> checked<!--{/if}-->>
+      <!--{lang_cp str="yesview"}-->
+      <input type="radio" name="mapstatus" value="1"<!--{if $finds.mapstatus eq 1}--> checked<!--{/if}-->></td>
+    </tr>	
+	<tr height="30">
+	  <td valign="top" class="biaoge">虚拟团购人员</td>
+	  <td align="left" valign="middle"><input name="shopman" type="text" id="shopman" value="<!--{$finds.shopman}-->">
+	    <span class="STYLE1">(新团购网站,可以虚拟已经团购的人数,更有利于网站运营)</span></td>
+    </tr>	
+	<tr height="30">
+      <td valign="top" class="biaoge">&nbsp;</td>
+      <td align="left" valign="middle"><input type="submit" id="submit" name="Submit" value="<!--{lang_cp str='submit'}-->">
+        <input type="reset" name="" value="<!--{lang_cp str='reset'}-->"></td>
+    </tr>
+  </table>
+</form>
+<script type="text/javascript">
+$("#submit").click(function(){
+//要做此操作,否则第一次提交无法判断其有值,xiezhanhui2011-3-16
+    window.frames["tgedit"].AttachSubmit();
+});
+</script>
+</body>
+</html>

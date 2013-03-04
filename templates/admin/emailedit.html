@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+
+<script type="text/javascript">
+<!--
+
+$(document).ready(function(){
+$("#theform").validate();
+});
+
+//-->
+</script>
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data" name="theform" id="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2><!--{lang_cp str="add"}--></h2></td>
+      <td width="23%" ><a href="./admin.php?tg=/emaillist/"><!--{lang_cp str="list"}--></a></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr height="30">
+      <td height="20" class="biaoge"></td>
+      <td><!--{lang_cp str="add"}--><!--{lang_cp str="email"}--><!--{lang_cp str="address"}-->&nbsp;:&nbsp;<input name="email" type="text" class="required" id="email" value="<!--{$email_select.email_name}-->">&nbsp;&nbsp;&nbsp;<input type="submit" id="submit" name="submit" value="<!--{lang_cp str='submit'}-->"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

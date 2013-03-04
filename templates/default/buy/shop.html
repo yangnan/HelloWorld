@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Description" content="<!--{$seo.seo_descript}-->">
+<meta name="Keywords" content="<!--{$seo.seo_keywords}-->">
+<title><!--{$seo.seo_title}--></title>
+<link rel="stylesheet" type="text/css" href="<!--{getstaticpath}-->style/style.css" />
+</head>
+<body>
+<!--头部-->
+<!--{include file="common/header.html"}-->
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+	var num = $("#input_text").val();
+	var price = $("#buy_price").text();
+	var total_price;
+	total_price = price * num;
+	$("#buy_total").text(total_price);
+	$("#total_t").text(total_price);
+});
+//数量改变，相应的总额也改
+
+function count_sum(){
+	var num = $("#input_text").val();
+	if((/^(\+|-)?\d+$/.test( num ))|| num<0){
+		
+		var price = $("#buy_price").text();
+		var total_price;
+		total_price = price * num;
+		$("#buy_total").text(total_price);
+		$("#total_t").text(total_price);
+	}else{
+		//alert("请输入你要购买的数量！");
+		$("#input_text").focus();
+		$("#buy_total").text(0);
+		$("#total_t").text(0);
+		return false;
+	}
+}
+
+//表单验证
+function check_form(){
+	var number = $("#input_text").val();
+	var mobile_phone_number = $("#mobile_phone_number").val();
+	var re = /^[1-9]\d*$/;
+	if(number == '' || !re.test(number)){
+		alert("<!--{lang_message str='zhengquetianxie'}-->");
+		$("#input_text").focus();
+		return false;
+	}else{
+		return true;
+	}
+}
+//-->
+</script>
+<div class="page">
+  <div class="banner"><img src="<!--{getstaticpath}-->images/banner.jpg" /></div>
+  <div class="con">
+    <div class="con_left">
+      <div class="con_left01"> </div>
+      <div class="con_left02" style="position:relative;">
+        <h2><!--{lang_cp str='postorder'}--></h2>
+		<form action="" method="post" onsubmit="return check_form();">
+        <div class="box">
+          <table class="order_table">
+            <tbody>
+              <tr>
+                <th class="buy_desc"><!--{lang_cp str='app'}--></th>
+                <th class="buy_qt"><!--{lang_cp str='shuliang'}--></th>
+                <th class="buy_multi"></th>
+                <th class="buy_price"><!--{lang_cp str='jiage'}--></th>
+                <th class="buy_equal"></th>
+                <th class="buy_total"><!--{lang_cp str='zongjia'}--></th>
+              </tr>
+              <tr>
+                <td class="buy_desc"><a target="_blank" href="?tg=/index/details/id/<!--{$id}-->"><!--{$grouponInfoArr.groupon_title}--></a></td>
+                <td class="buy_qt"><input type="text" name="quantity" maxlength="4" id="input_text" onkeyup="count_sum();" value="<!--{$grouponInfoArr.quantity}-->" class="input_text" autocomplete="off"></td>
+                <td class="buy_multi">x</td>
+                <td class="buy_price">
+					<span class="money">￥</span><span class="buy_price" id="buy_price"><!--{$grouponInfoArr.groupon_present_price}--></span>
+					<input type="hidden" name="price" id="price" value="<!--{$grouponInfoArr.groupon_present_price}-->"/>
+				  </td>
+                <td class="buy_equal">=</td>
+                <td class="buy_total">
+					<span class="money">￥</span><span class="buy_total" id="buy_total"><!--{$grouponInfoArr.groupon_present_price}--></span>
+				</td>
+              </tr>
+              <tr style="display: none;" id="cardcode-row">
+                <td class="buy_desc"><!--{lang_cp str='vouchers'}-->：<span class="row_n"></span></td>
+                <td class="buy_qt"></td>
+                <td class="buy_multi"></td>
+                <td class="buy_price"></td>
+                <td class="buy_equal"></td>
+                <td class="buy_total">-<span class="money">￥</span><span class="row_t">0</span></td>
+              </tr>
+              <tr class="order_total">
+                <td class="buy_desc"><strong><!--{lang_cp str='zonge'}--></strong></td>
+                <td class="buy_qt"></td>
+                <td class="buy_multi"></td>
+                <td class="buy_price"></td>
+                <td class="buy_equal">=</td>
+                <td class="buy_total"><span class="money">￥</span><strong class="total_t" id="total_t"><!--{$grouponInfoArr.groupon_present_price}--></strong></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="mt">
+			<!--{if $uAddress}-->
+			<div class="field mobile">
+			<label><!--{lang_cp str='postaddress'}-->:</label>
+			<select id="addressid" name="addressid">
+            <!--{foreach from="$uAddress" item="vo"}-->
+			<option value="<!--{$vo.id}-->"><!--{$vo.users_street}--></option>
+            <!--{/foreach}-->
+			</select>
+			</div>
+			<!--{else}-->
+			<div class="field mobile">
+			  <table width="100%" height="268" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td height="36" colspan="2" style="background:none repeat scroll 0 0 #EFF8FF;"><!--{lang_cp str='postaddressform'}--></td>
+                </tr>
+                <tr>
+                  <td width="17%"><!--{lang_cp str='quyu'}-->：</td>
+                  <td width="83%">
+                       <span id="province_setting"></span>
+                   <!--{lang_cp str='add_province'}-->:
+                   <select name="citylist" id="citylist">
+                     <option value="0"><!--{lang_cp str='beijing'}--></option>
+                   </select>
+                   <!--{lang_cp str='city'}-->
+                </tr>
+                <tr>
+                  <td><!--{lang_cp str='jiedaodizhi'}--></td>
+                  <td><input name="address" type="text" id="address" /></td>
+                </tr>
+                <tr>
+                  <td><!--{lang_cp str='zipcode'}--></td>
+                  <td><input name="postcode" type="text" id="postcode" /></td>
+                </tr>
+                <tr>
+                  <td><!--{lang_cp str='mobile'}--></td>
+                  <td><input name="mobile" type="text" id="mobile" value="<!--{$grouponInfoArr.mobile_phone_number}-->" /></td>
+                </tr>
+                <tr>
+                  <td><!--{lang_cp str='phone'}--></td>
+                  <td><input name="phone" id="phone" type="text" id="phone"/></td>
+                </tr>
+                <tr>
+                  <td><!--{lang_cp str='shouhuoren'}--></td>
+                  <td><input name="ship_man" type="text" id="ship_man" /></td>
+                </tr>
+              </table>
+			</div>
+			<!--{/if}-->		  
+		  
+		  
+		  </p>
+          <p class="mt">
+            <input name=" " type="submit"  value="<!--{language_cp str='button_buy'}-->" class="btn" id="btn"/>
+          </p>
+        </div>
+		</form>
+      </div>
+      <div class="con_left03"> </div>
+    </div>
+  </div>
+</div>
+<div class="clera"></div>
+<script type="text/javascript">
+var userads = "<!--{$uAddress}-->";
+if(!userads)
+{
+    loadArray();//调用城市信息
+}
+</script>
+<!--底部-->
+<!--{include file="common/footer.html"}-->
+
+<script type="text/javascript"> 
+	$(document).ready(function(){
+	$("#btn").click(function(){
+        //$("#email").val() == "";
+		var address = $('#address').val();
+		var mobile = $('#mobile').val();
+		var phone = $('#phone').val();
+		var ship_man = $('#ship_man').val();
+        if(address == "")
+        {
+            alert("<!--{lang_message str='not_null_address'}-->！");
+            $("#address").focus(); 
+            return false;
+        }else if(mobile==""&&phone==""){
+			alert("<!--{lang_message str='not_null_mophone'}-->！");
+     		$("#mobile").focus();
+	 		return false;
+		}else if(!mobile.match(/^(130|133|132|133|134|135|136|137|138|139|181|182|183|184|185|186|187|188|189|152|153|155|156|157|158|159|151|150)\d{8}$/)){
+			alert("<!--{lang_message str='format_mobile'}-->");
+			$("#mobile").focus();
+			return false;
+		}else if(ship_man==""){
+     		alert("<!--{lang_message str='not_null_linkman'}-->！");
+     		$("#ship_man").focus();
+	 		return false;
+   		}
+	});
+});
+</script>
+</body>
+</html>

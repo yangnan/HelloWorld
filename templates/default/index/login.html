@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Description" content="<!--{$seo.seo_descript}-->">
+<meta name="Keywords" content="<!--{$seo.seo_keywords}-->">
+<title><!--{$seo.seo_title}--></title>
+<link rel="stylesheet" type="text/css" href="<!--{getstaticpath}-->style/style.css" />
+</head>
+<body>
+<!--头部-->
+<!--{include file="common/header.html"}-->
+<script type="text/javascript">
+
+var required = "not";
+$(document).ready(function(){
+	$("#loginbtn").click(function(){
+        var loguser = $("#loguser").val();
+        var logpwd = $("#logpwd").val();
+        if(loguser == "")
+        {
+            alert("<!--{language_message str='emailorusernotnull'}-->!");
+            $("#loguser").focus(); 
+            return false;
+        }else if(logpwd == ""){
+			alert("<!--{language_message str='not_null_pass'}-->！");
+			$("#logpwd").focus();
+			return false;
+		}
+		else{
+		    login(loguser,logpwd);
+		}
+	});
+	
+	
+//author:xiezhanhui <jeffxie@gmail.com> 2011-02-26
+//注册
+	$("#regbtn").click(function(){
+        var reguser = $("#reguser").val();
+        var regpwd = $("#regpwd").val();
+        var regpwd2 = $("#regpwd2").val();		
+		var regmobile = $("#regmobile").val();
+		var regemail = $("#regemail").val();
+		var regqq = $("#regqq").val();
+        
+		if(!regemail.match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)){
+			alert("<!--{lang_message str='not_null_email'}-->！");
+			$("#regemail").focus();
+			return false;
+		}
+        else if(reguser == "")
+        {
+            alert("<!--{lang_message str='not_null_username'}-->!");
+            $("#reguser").focus(); 
+            return false;
+        }else if(regpwd == ""){
+			alert("<!--{language_message str='not_null_pass'}-->！");
+			$("#regpwd").focus();
+			return false;
+		
+        }else if(regpwd2 == ""){
+			alert("<!--{language_message str='not_different_pass'}-->！");
+			$("#regpwd2").focus();
+			return false;
+			
+        }else if(regpwd2 != regpwd){
+			alert("<!--{language_message str='not_different_pass'}-->!");
+			return false;
+		}
+		else if(!regmobile.match(/^(130|133|132|133|134|135|136|137|138|139|181|182|183|184|185|186|187|188|189|152|153|155|156|157|158|159|151|150)\d{8}$/)){
+			alert("<!--{lang_message str='not_null_tel'}-->");
+			$("#regmobile").focus();
+			return false;
+		}				
+		else{
+			var successProcess=function(data){
+			
+				switch(data)
+				{
+					case '1':
+						alert("<!--{lang_message str='emailrepeat'}-->");
+						break;
+					case '2':
+						alert("<!--{lang_message str='registerok'}-->");
+						location="?tg=/index/login";
+						break;
+					case '3':
+						alert("<!--{language_message str='not_different_pass'}-->");
+						break;	
+					case '4':
+						alert("<!--{lang_message str='system_error'}-->");
+						break;
+					case '5':	
+						alert("<!--{language_message str='registersameip'}-->");
+						location='?tg=/index/details';
+						break;
+					default:
+						alert("<!--{lang_message str='system_error'}-->");
+						break;			
+				}
+
+			}
+            $.ajax({
+              type: 'POST',
+              url: "?tg=/index/register/",
+              data: {'reguser':reguser,'regpwd':regpwd,'regpwd2':regpwd2,'regqq':regqq,'regemail':regemail,'regmobile':regmobile},
+              cache:false,
+              success: successProcess
+              //dataType: dataType
+            });
+		
+		
+		}
+	});
+ });
+
+
+document.body.onmouseover=function(eventTag){
+   var event=eventTag||windows.event;
+var e=event.srcElement||event.target;
+}
+document.onkeydown=keyDown;
+
+function keyDown(e){
+var reguser = $("#reguser").val();
+var regpwd = $("#regpwd").val();
+var regpwd2 = $("#regpwd2").val();
+var loguser = $("#loguser").val();
+var logpwd = $("#logpwd").val();
+var regqq = $("#regqq").val();
+var regemail = $("#regemail").val();
+var regmobile  = $("#regmobile").val();
+if((e ? e.which : event.keyCode)==13 ){
+		if(loguser!="" && logpwd!="")
+		{
+			login(loguser,logpwd);
+		}
+		else if(reguser && regpwd)
+		{
+			reg(reguser,regpwd,regpwd2,regqq,regemail,regmobile);
+		}
+}
+}
+
+
+function reg(reguser,regpwd,regpwd2,regqq,regemail,regmobile) {
+			var successProcess=function(data){
+			
+				switch(data)
+				{
+					case '1':
+						alert("<!--{lang_message str='emailrepeat'}-->");
+						break;
+					case '2':
+						alert("<!--{lang_message str='registerok'}-->");
+						location="?tg=/index/login";
+						break;
+					case '3':
+						alert("<!--{language_message str='not_different_pass'}-->");
+						break;	
+					case '4':
+						alert("<!--{lang_message str='system_error'}-->");
+						break;
+					case '5':	
+						alert("<!--{language_message str='registersameip'}-->");
+						location='?tg=/index/details';
+						break;
+					default:
+						alert("<!--{lang_message str='system_error'}-->");
+						break;			
+				}
+
+			}
+            $.ajax({
+              type: 'POST',
+              url: "?tg=/index/register/",
+              data: {'reguser':reguser,'regpwd':regpwd,'regpwd2':regpwd2,'regqq':regqq,'regemail':regemail,'regmobile':regmobile},
+              cache:false,
+              success: successProcess
+              //dataType: dataType
+            });
+    
+}
+
+function login(loguser,logpwd)
+{
+var successProcess=function(data){
+        switch(data)
+        {
+            case '1':
+                location="?tg=/index/myfriend";
+                break;
+            case '2':
+                location="?tg=/vip/index";
+                break;
+            case '3':
+                alert("<!--{language_message str='loginerror'}-->");
+                break;	
+            default:
+                alert("<!--{lang_message str='system_error'}-->");
+                break;			
+        }
+
+}
+$.ajax({
+  type: 'POST',
+  url: "?tg=/index/login/",
+  data: {'loguser':loguser,'logpwd':logpwd},
+  cache:false,
+  success: successProcess
+  //dataType: dataType
+});	
+}
+</script>
+<div class="page">
+  <div class="con">
+    <div class="con_left">
+      <div class="con_left01"> </div>
+      <div class="con_left02" style="position:relative;">
+        <h2><!--{lang_message str='loginorregisterplease'}--></h2>
+        <div class="box">
+           <div class="siderL">
+            <form action="" method="post" enctype="multipart/form-data" name="theform" id="theform">
+              <p><span class="wt"><!--{lang_cp str='email'}--></span><input name="regemail" type="text" class="inp01" id="regemail"/>
+              </p>
+              <p><span class="wt"><!--{lang_cp str='username'}--></span><input name="reguser" type="text" class="inp01" id="reguser"/>
+              </p>
+              <p><span class="wt"><!--{lang_cp str='password'}--></span><input name="regpwd"  type="password" class="inp01" id="regpwd"/>
+              </p>
+              <p><span class="wt"><!--{lang_cp str='passwords'}--></span><input name="regpwd2"  type="password" class="inp01" id="regpwd2"/>
+              </p>
+              <p><span class="wt"><!--{lang_cp str='qqandmsn'}--></span><input name="regqq" type="text" class="inp01" id="regqq"/>
+              </p>
+              <p><span class="wt"><!--{lang_cp str='m_phone'}--></span><input name="regmobile" type="text" class="inp01" id="regmobile"/>
+              </p>			  			  
+              <p><span class="wt"><!--{lang_cp str='place_city'}--></span><select autocomplete="off" name="province"><option selected="selected" value="110000">北京</option></select> &nbsp;&nbsp; <select name="city" id="city" autocomplete="off">
+                <option selected="selected" value="110000">北京</option></select></p>
+              <p><input name="subscription" type="checkbox" id="subscription" value="1" />
+              <!--{language_cp str='subscription_information_now'}-->
+              </p>
+              <p><span class="wt">&nbsp;</span><input id="regbtn" name="regbtn" type="button" value="<!--{lang_cp str='registered'}-->"  class="btn02"/>
+              </p>
+            </form>
+         </div>
+         <div class="loginsiderR">
+              <p class="ft"><!--{lang_cp str='haveaccount'}--></p>
+              <p><span class="wt"><!--{lang_cp str='email'}-->/<!--{lang_cp str='username'}--></span><input name="loguser" type="text" class="inp01" id="loguser" />
+              </p>
+              <p><span class="wt"><!--{lang_cp str='password'}--></span><input name="logpwd"  type="password" class="inp01" id="logpwd"/>
+              </p>
+               <p><span class="wt">&nbsp;</span><input name="loginbtn" type="button"  class="btn02" id="loginbtn" value="<!--{lang_cp str='login'}-->"/>
+           </div>
+       </div>
+      </div>
+      <div class="con_left03"> </div>
+    </div>
+  </div>
+</div>
+<div class="clera"></div>
+<!--底部-->
+<!--{include file="common/footer.html"}-->
+<script type="text/javascript" src="common/ip.php?url=<!--{geturl str='2'}-->&refr=<!--{geturl str='1'}-->"></script>
+</body>
+</html>

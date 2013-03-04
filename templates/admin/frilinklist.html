@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+</head>
+<body>
+<form method="post" action="" name="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2>
+          <!--{lang_cp str="list"}-->
+        </h2></td>
+      <td width="23%" ><a href="./admin.php?tg=/frilinkadd/">
+        <!--{lang_cp str="add"}-->
+        </a></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="biaoti bg">
+      <td width="8%">ID</td>
+      <td width="20%"><!--{lang_cp str="title"}--></td>
+      <td width="20%"><!--{lang_cp str="frilink_url"}--></td>
+	  <td width="10%"><!--{lang_cp str="status"}--></td>
+	  <td width="10%"><!--{lang_cp str="pubtime"}--></td>
+      <td width="10%"><!--{lang_cp str="operate"}--></td>
+    </tr>
+    <!--{section name=loop loop=$frilink_Arr}-->
+    <tr class="biaoti">
+      <td width="8%"><!--{$frilink_Arr[loop].id}--></td>
+      <td width="20%"><!--{$frilink_Arr[loop].frilink_title}--></td>
+      <td width="20%"><!--{$frilink_Arr[loop].frilink_url}--></td>
+	  <td width="10%"><!--{if $frilink_Arr[loop].status eq 0}--><!--{lang_cp str="hide"}--><!--{else}--><!--{lang_cp str="display"}--><!--{/if}--></td>
+	  <td width="10%"><!--{$frilink_Arr[loop].pubtime|date_format:"Y-m-d"}--></td>
+      <td width="10%"><a href='./admin.php?tg=/frilinkedit/id/<!--{$frilink_Arr[loop].id}-->'>
+        <!--{lang_cp str="editor"}-->
+        </a><a onclick="return confirm('<!--{lang_cp str="confirm_delete"}-->')" href='./admin.php?tg=/frilinkdelete/id/<!--{$frilink_Arr[loop].id}-->'>
+        <!--{lang_cp str="del"}-->
+        </a></td>
+    </tr>
+    <!--{/section}-->
+    <tr>
+      <td colspan="4"><!--{page2html str=$pager}--></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

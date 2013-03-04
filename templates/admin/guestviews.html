@@ -1,0 +1,123 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>流量统计页面</TITLE>
+<!--{include file="common/common.html"}-->
+<style type="text/css">
+<!--
+.STYLE2 {color: #FFFFFF}
+.STYLE3 {
+	color: #FF0000;
+	font-weight: bold;
+}
+.bk1 {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-top-color: #00CCFF;
+	border-right-color: #00CCFF;
+	border-bottom-color: #00CCFF;
+	border-left-color: #00CCFF;
+}
+.bkbig {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #00CCFF;
+	border-right-color: #00CCFF;
+	border-bottom-color: #00CCFF;
+	border-left-color: #00CCFF;
+}
+.STYLE4 {font-size: 12px}
+.STYLE5 {
+	font-size: 14px;
+	font-weight: bold;
+}
+.STYLE6 {font-family: "宋体"}
+-->
+</style>
+</head>
+<body>
+<table width="95%" border="0" cellpadding="0" cellspacing="0" class="bkbig">
+  <tr>
+    <td height="33" colspan="5" bgcolor="#006699"><span class="STYLE2"> <span class="STYLE5">&nbsp;<span class="STYLE6">&nbsp;访问量概况</span></span><span class="STYLE4">:(点<span class="STYLE3"><a href="admin.php?tg=/trafficstatisticslist/type/font">这里</a></span>切换到文字模式--细节)</span></span></td>
+  </tr>
+  <tr>
+    <td width="11%" height="41" valign="middle">&nbsp;</td>
+    <td width="13%" valign="middle"><strong>PV</strong></td>
+    <td width="65%" valign="middle"><strong>独立IP访客</strong></td>
+    <td width="5%" valign="middle">&nbsp;</td>
+    <td width="6%" valign="middle">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="31" bgcolor="#EEF5FF"><strong>&nbsp;今&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 日&nbsp;：</strong></td>
+    <td bgcolor="#EEF5FF"><strong><!--{$todaypv}--></strong></td>
+    <td bgcolor="#EEF5FF"><strong><!--{$todayip}--></strong></td>
+    <td bgcolor="#EEF5FF">&nbsp;</td>
+    <td bgcolor="#EEF5FF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="35" bgcolor="#EEF5FF"><strong>&nbsp;昨       日：</strong></td>
+    <td bgcolor="#EEF5FF"><!--{$yestodaypv}--></td>
+    <td bgcolor="#EEF5FF"><!--{$yestodayip}--></td>
+    <td bgcolor="#EEF5FF">&nbsp;</td>
+    <td bgcolor="#EEF5FF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="35" bgcolor="#EEF5FF">&nbsp;每日平均&nbsp;：</td>
+    <td bgcolor="#EEF5FF"><!--{$sumviews.pv}--></td>
+    <td bgcolor="#EEF5FF"><!--{$sumviews.ip}--></td>
+    <td bgcolor="#EEF5FF">&nbsp;</td>
+    <td bgcolor="#EEF5FF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="35" bgcolor="#EEF5FF">&nbsp;历史累计&nbsp;：</td>
+    <td bgcolor="#EEF5FF"><!--{$getAllPv}--></td>
+    <td bgcolor="#EEF5FF"><!--{$getAllIp}--></td>
+    <td bgcolor="#EEF5FF">&nbsp;</td>
+    <td bgcolor="#EEF5FF">&nbsp;</td>
+  </tr>
+</table>
+<table width="95%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="39">&nbsp;</td>
+  </tr>
+</table>
+<table width="95%" height="236" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="48%" valign="top"><table width="95%" height="110" border="0" cellpadding="0" cellspacing="0" class="bkbig">
+      <tr>
+        <td height="38" class="bk1">&nbsp;今日搜索引擎</td>
+      </tr>
+      <tr>
+        <td align="center"><img src="common/img.php?type=from_url" style="border:none"></td>
+      </tr>
+    </table></td>
+    <td width="52%" valign="top"><table width="100%" height="110" border="0" cellpadding="0" cellspacing="0" class="bkbig">
+      <tr>
+        <td height="38" class="bk1">&nbsp;今日地区分布</td>
+      </tr>
+      <tr>
+        <td align="center"><img src="common/img.php?type=country" style="border:none"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="956" height="87" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="87">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+</head>
+<body>
+<form method="post" action=" " name="form">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td><h2><!--{lang_cp str="list"}--></h2></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="biaoti bg"> 
+      <td width="10%">ID</td>
+	  <td width="20%"><!--{lang_cp str="username"}--></td>
+      <td width="30%"><!--{lang_cp str="title"}--></td>
+	  <td width="20%"><!--{lang_cp str="pubtime"}--></td>
+	  <td width="20%"><!--{lang_cp str="operate"}--></td>
+    </tr>
+	<!--{section name=loop loop=$suggestlistArr}-->
+    <tr class="biaoti">
+      <td width="10%"><!--{$suggestlistArr[loop].id}--></td>
+	  <td width="20%"><!--{$suggestlistArr[loop].suggestion_name}--></td>	  
+      <td width="30%"><!--{$suggestlistArr[loop].suggestion_title}--></td>
+	  <td width="20%"><!--{$suggestlistArr[loop].pubtime|date_format:"Y-m-d"}--></td>
+      <td width="20%"><a href="./admin.php?tg=/suggestcheck/id/<!--{$suggestlistArr[loop].id}-->">
+        <!--{lang_cp str="view"}-->
+        </a><a href='./admin.php?tg=/suggestdelete/id/<!--{$suggestlistArr[loop].id}-->' onClick="return confirm('<!--{lang_cp str="confirm_delete"}-->')">
+        <!--{lang_cp str="del"}-->
+        </a></td>
+    </tr>
+    <!--{/section}-->
+    <tr><td colspan="4"><!--{page2html str=$pager}--></td></tr>
+  </table>
+
+</form>
+</body>
+</html>

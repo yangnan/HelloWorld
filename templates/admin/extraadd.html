@@ -1,0 +1,70 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data" name="theform" id="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2><!--{lang_cp str="add"}--></h2></td>
+      <td width="23%" ><a href="./admin.php?tg=/extralist/"><!--{lang_cp str="list"}--></a></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="10%" height="28" class="biaoge"><!--{lang_cp str="category"}--></td>
+      <td width="90%"><select name="extra_class" id="extra_class">
+          <!--{section name=loop loop=$extraClass}-->
+          <option value="<!--{$extraClass[loop].id}-->">
+          <!--{$extraClass[loop].extra_class}-->
+          </option>
+          <!--{/section}-->
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td height="40" class="biaoge"><!--{lang_cp str="title"}--></td>
+      <td><input name="extra_title" type="text" class="required" id="extra_title" size="55"></td>
+    </tr>
+    <tr>
+      <td width="8%" height="214" valign="top" class="biaoge"><label>
+        <!--{lang_cp str="content"}-->
+        </label></td>
+      <td valign="top" align="left">
+		<iframe id="tgedit" name="tgedit" id="tgedit" name="tgedit" src="templates/admin/TGEditor/Edit/editor.htm?id=extra_content&ReadCookie=0" frameBorder="0" marginHeight="0" marginWidth="0" scrolling="No" width="700" height="800"></iframe>
+		<input type="hidden" name="extra_content" id="extra_content" value=""/>
+    </tr>
+    <tr>
+      <td height="52" valign="middle" class="biaoge"><!--{lang_cp str="status"}--></td>
+      <td align="left" valign="middle"><select name="status">
+          <option value="1" >
+          <!--{lang_cp str="display"}-->
+          </option>
+          <option value="0" >
+          <!--{lang_cp str="hide"}-->
+          </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td height="52" valign="top" class="biaoge">&nbsp;</td>
+      <td align="left" valign="middle"><input type="submit" id="submit" name="Submit" value="<!--{lang_cp str='submit'}-->">
+        <input type="reset" name="" value="<!--{lang_cp str='reset'}-->"></td>
+    </tr>
+  </table>
+</form>
+
+<script type="text/javascript">
+$("#submit").click(function(){
+//要做此操作,否则第一次提交无法判断其有值,xiezhanhui2011-3-16
+    window.frames["tgedit"].AttachSubmit();
+});
+</script>
+</body>
+</html>

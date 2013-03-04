@@ -1,0 +1,30 @@
+* { margin:0; padding:0; font-family:"宋体"; font-size:12px; background:#fff;}
+a { color:#09C;}
+table {margin-left:22px;background:#fff;}
+h2 { font-size:14px; color:#0099CC; margin:5px 0; padding:2px 5px;}
+.sty { height:5px; background:#deeffa;}
+.biaoti {color:#555; height:25px; line-height:25px; text-indent:5px;}
+.biaoge { padding:5px;}
+input { border-top:1px solid #555;border-left:1px solid #555;border-right:1px solid #ccc;border-bottom:1px solid #ccc; height:20px;}
+.board { padding-left:60px; background:url(/medias/images/bg_repno.gif) no-repeat -238px -550px; width:250px;}
+.addboard {background:url(/medias/images/bg_repno.gif) no-repeat 0px -600px; line-height:25px; width:25px; display:inline;}
+.lastboard { padding-left:60px; margin:8px 0;background:url(/medias/images/bg_repno.gif) no-repeat -238px -600px; width:250px;}
+.addtr { padding-left:17px; background:url(/medias/images/bg_repno.gif) no-repeat 0 0; color:#F60; text-decoration:none; width:250px;}
+.add { padding-left:17px; background:url(/medias/images/bg_repno.gif) no-repeat 0 -600px; color:#F60; text-decoration:none;}
+.addtr:hover { text-decoration:underline; color:#F60;}
+.alink { text-decoration:none;}
+.alink:hover{ text-decoration:underline;}
+.bun { border:none; width:40px; height:20px; background:#ccc;}
+.news { color:#F60; text-decoration:none;}
+.news:hover { text-decoration:underline;color:#F60;}
+.txt { margin:5px;}
+.jianju { margin:15px 0;}
+
+/*xiezhanhui 分页 2011-01-13*/
+li{
+border:1px solid #23A5D6;
+float:left;
+padding:2px;
+margin:2px;
+list-style:none outside none;
+}

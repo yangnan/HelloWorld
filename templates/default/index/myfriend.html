@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Description" content="<!--{$seo.seo_descript}-->">
+<meta name="Keywords" content="<!--{$seo.seo_keywords}-->">
+<title><!--{$seo.seo_title}--></title>
+<link rel="stylesheet" type="text/css" href="<!--{getstaticpath}-->style/style.css" />
+</head>
+<body>
+<!--头部-->
+<!--{include file="common/header.html"}-->
+<form id="form1" name="form1" method="post" action="">
+<div class="page">
+    	<!--<div class="banner">
+  <script type="text/javascript" src="?tg=/ads/view/id/1"></script>		
+		</div>-->
+        <div class="con">
+        	<div class="con_left">
+            	<div class="con_left01">
+                </div>
+                <div class="con_left02" style="position:relative;">
+                	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top">
+    	<p class="lb01"><!--{lang_cp str='invitefriends'}--></p>
+        <div class="lin"></div>
+        <p class="yqhy_zi">&nbsp;&nbsp;&nbsp;&nbsp;<!--{language_message str='readme'}--></p>
+  	<div class="yqhy_01">
+    	<div class="yqhy_img"><img src="templates/default/images/MSND.jpg" width="35" height="36" /></div>
+        <div class="yqhy_con">
+        	<div class="yqhy_top"><strong><!--{lang_cp str='yourlink'}-->：</strong></div>
+            <div class="yqhy_bottom">
+
+<script type="text/javascript">
+function jsCopy(txt)
+{       
+     if(window.clipboardData)
+     {
+        window.clipboardData.clearData();
+        window.clipboardData.setData("Text", txt);
+        alert("<!--{lang_message str='copyok'}-->！")
+     }
+     else if(navigator.userAgent.indexOf("Opera") != -1)
+     {
+        window.location = txt;
+     }
+     else if (window.netscape)
+     {
+       try
+       {
+          netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+       }
+       catch (e)
+       {
+          alert("<!--{lang_message str='firefox_error'}-->");
+       }
+        var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
+        if (!clip)
+               return;
+        var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
+        if (!trans)
+               return;
+        trans.addDataFlavor('text/unicode');
+        var str = new Object();
+        var len = new Object();
+        var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+        var copytext = txt;
+        str.data = copytext;
+        trans.setTransferData("text/unicode",str,copytext.length*2);
+        var clipid = Components.interfaces.nsIClipboard;
+        if (!clip)
+               return false;     
+        clip.setData(trans,null,clipid.kGlobalClipboard);
+        alert("<!--{lang_message str='copyok'}-->！")
+     }
+}  
+ </script>
+              <input name="fu_copy" type="text" value="<!--{$path}-->" class="texthttp wbk" id="content"/>
+              &nbsp;<input name="fu_zhi" type="button" value="<!--{lang_message str='copy'}-->" class="wban" onclick="jsCopy(content.value)"/>
+
+			  
+			  
+             
+			  </div>
+        </div>
+    </div>
+    
+    </td>
+  </tr>
+  <tr>
+  <td></td>
+  </tr>
+</table>
+
+				
+
+</div>
+                <div class="con_left03">
+                </div>
+        	</div>
+            <div class="con_right">
+            	<div class="con_right_con01">
+                	<div class="con_right_top"></div>
+                  <div class="con_right_center">
+           	      		<div class="neiron">
+                        	<p style="text-indent:0;"><strong><!--{language_cp str='fanviews'}-->？</strong></p>
+           	        <p><!--{language_cp str='ifyaoqingok'}--></p>
+           	   
+                        </div>
+                    </div>
+                    <div class="con_right_bottom"></div>
+                </div>
+                <div class="con_right_con01">
+                	<div class="con_right_top"></div>
+                  <div class="con_right_center">
+           	      		<div class="neiron">
+                        	<p style="text-indent:0;"><strong><!--{language_cp str='ifregister'}--></p>
+
+
+           	   
+                        </div>
+                  </div>
+                    <div class="con_right_bottom"></div>
+                </div>
+                <div class="con_right_con01">
+                	<div class="con_right_top"></div>
+                  <div class="con_right_center">
+           	      		<div class="neiron">
+                       	  <p style="text-indent:0;"><strong><!--{language_cp str='shixiaoyaoqing？'}--></strong></p>
+           	        <p style="text-indent:0;"><!--{language_cp str='readmeall'}--></p>
+
+
+           	   
+                        </div>
+                  </div>
+                    <div class="con_right_bottom"></div>
+                </div>
+                <div class="con_right_con01">
+                	<div class="con_right_top"></div>
+                  <div class="con_right_center">
+           	      		<div class="neiron">
+                        	<p style="text-indent:0;"><strong><!--{language_cp str='yaoqingzji'}-->？</strong></p>
+           	        <p><!--{language_cp str='yaoqingzjiisok'}--> </p>
+                        </div>
+                  </div>
+                    <div class="con_right_bottom"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+	</form>
+<div class="clera"></div>
+	<!--底部-->
+<!--{include file="common/footer.html"}-->
+<script type="text/javascript" src="common/ip.php?url=<!--{geturl str='2'}-->&refr=<!--{geturl str='1'}-->"></script>
+</body>
+</html>

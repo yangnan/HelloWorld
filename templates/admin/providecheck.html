@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+</head>
+<body>
+<form action="" method="post" enctype=" " name="form">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2><!--{lang_cp str="detailed"}--></h2></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height="40" class="biaoge"><!--{lang_cp str="username"}--></td>
+      <td><!--{$provideArr.provide_username}--></td>  
+    </tr>
+    <tr>
+      <td height="40" class="biaoge"><!--{lang_cp str="message_tg"}--></td>
+      <td><!--{$provideArr.provide_content}--></td>
+    </tr>
+	<tr>
+      <td height="40" class="biaoge"><!--{lang_cp str="telephone"}--></td>
+      <td><!--{$provideArr.provide_telphone}--></td>
+    </tr>
+	<tr>
+      <td height="40" class="biaoge"><!--{lang_cp str="contact"}--></td>
+      <td><!--{$provideArr.provide_contact}--></td>
+    </tr>
+	<tr>
+      <td height="40" class="biaoge"><!--{lang_cp str="city_tg"}--></td>
+      <td><!--{$provideArr.provide_city}--></td>
+    </tr>
+	<tr>
+      <td height="40" class="biaoge"><!--{lang_cp str="pubtime"}--></td>
+      <td><!--{$provideArr.pubtime|date_format:"Y-m-d H:i"}--></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

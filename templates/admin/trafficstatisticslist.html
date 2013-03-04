@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>流量统计页面</TITLE>
+
+<!--{include file="common/common.html"}-->
+<style type="text/css">
+<!--
+.STYLE1 {color: #FFFFFF}
+-->
+</style>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="41" colspan="5" bgcolor="#006699" class="bkbig"><span class="STYLE2"> <span class="STYLE5">&nbsp;<span class="STYLE6">&nbsp;<span class="STYLE1">访问量概况</span></span></span><span class="STYLE4 STYLE1">:(点</span><span class="STYLE4"><span class="STYLE3"><a href="admin.php?tg=/trafficstatisticslist">这里</a></span><span class="STYLE1">切换到图形模式--细节)</span></span></span></td>
+  </tr>
+</table>
+
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <form method="post" action="" name="theform">
+    <tr class="biaoge">
+      <td width="10%">ID</td>
+	  <td width="15%"><!--{lang_cp str="visitors_ip"}--></td>
+	  <td width="30%"><!--{lang_cp str="visit_url"}--></td>
+	  <td width="30%"><!--{lang_cp str="from_url"}--></td>
+	  <td width="15%"><!--{lang_cp str="access_time"}--></td>
+    </tr>
+    <!--{section name=loop loop=$trafficstatisticslistArr}-->
+    <tr class="biaoge">
+      <td width="10%"><!--{$trafficstatisticslistArr[loop].id}--></td>
+	  <td width="15%"><!--{$trafficstatisticslistArr[loop].ip|long2ip}--></td>
+	  <td width="30%"><!--{$trafficstatisticslistArr[loop].visit_url}--></td>
+	  <td width="30%"><!--{$trafficstatisticslistArr[loop].from_url}--></td>
+	  <td width="15%"><!--{$trafficstatisticslistArr[loop].access_time|date_format:"Y-m-d H:i:s"}--></td>
+    </tr>
+    <!--{/section}-->
+    <tr>
+      <td colspan="4"><!--{page2html str=$pager}--></td>
+    </tr>
+</form>	
+  </table>
+</body>
+</html>
+

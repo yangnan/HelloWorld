@@ -1,0 +1,109 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<!--{include file="common/common.html"}-->
+<script src="static/js/window.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<form method="post" action="" name="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2>
+          <!--{lang_cp str="list"}-->
+        </h2></td>
+      <td width="23%" >
+	  <a href="./admin.php?tg=/adsadd/"><!--{lang_cp str="add"}--></a>
+	  </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr class="biaoti bg">
+      <td width="8%"><div align="center">ID</div></td>
+      <td width="10%"><div align="center">
+        <!--{lang_cp str="ads_name"}-->
+      </div></td>
+	  <td width="10%"><div align="center">
+	    <!--{lang_cp str="ads_page"}-->
+      </div></td>
+      <td width="10%"><div align="center">
+        <!--{lang_cp str="ads_position"}-->
+      </div></td>
+	  <td width="10%"><div align="center">
+	    <!--{lang_cp str="ads_type"}-->
+      </div></td>
+	  <td width="10%"><div align="center">
+	    <!--{lang_cp str="start_time"}-->
+      </div></td>
+	  <td width="10%"><div align="center">
+	    <!--{lang_cp str="end_time"}-->
+      </div></td>
+      <td width="22%"><div align="center">
+        <!--{lang_cp str="operate"}-->
+      </div></td>
+    </tr>
+    <!--{section name=loop loop=$arr_ads}-->
+    <tr class="biaoti">
+      <td width="8%"><div align="center">
+        <!--{$arr_ads[loop].id}-->
+      </div></td>
+	  <td width="10%"><div align="center">
+	    <!--{$arr_ads[loop].ads_name}-->
+      </div></td>	  
+      <td width="10%"><div align="center">
+        <!--{if $arr_ads[loop].ads_page eq 1}-->
+        <!--{lang_cp str="home_show"}-->
+        <!--{else}-->
+        <!--{lang_cp str="list"}-->
+        <!--{lang_cp str="display"}-->
+        <!--{/if}-->
+      </div></td>
+      <td width="10%"><div align="center">
+        <!--{if $arr_ads[loop].ads_position eq 1}-->
+        <!--{lang_cp str="head"}-->
+        <!--{elseif $arr_ads[loop].ads_position eq 2}-->
+        <!--{lang_cp str="remind"}-->
+        <!--{elseif $arr_ads[loop].ads_position eq 3}-->
+        <!--{lang_cp str="tail"}-->
+        <!--{elseif $arr_ads[loop].ads_position eq 4}-->
+        <!--{lang_cp str="remind"}-->
+        <!--{/if}-->
+      </div></td>
+      <td width="10%"><div align="center">
+        <!--{if $arr_ads[loop].ads_type eq 1}-->
+        <!--{lang_cp str="font"}-->
+        <!--{else}-->
+        <!--{lang_cp str="img"}-->
+        <!--{/if}-->
+      </div></td>
+      <td width="10%"><div align="center">
+        <!--{$arr_ads[loop].ads_start_time|date_format:"Y-m-d"}-->
+      </div></td>
+	  <td width="10%"><div align="center">
+	    <!--{$arr_ads[loop].ads_end_time|date_format:"Y-m-d"}-->
+      </div></td>
+      <td width="22%">
+	    <div align="center">
+		<a href='./admin.php?tg=/adsedit/id/<!--{$arr_ads[loop].id}-->'>
+		<!--{lang_cp str="editor"}--></a>  / 
+		<a onClick="return confirm('<!--{lang_cp str="confirm_delete"}-->')" href='./admin.php?tg=/adsdelete/id/<!--{$arr_ads[loop].id}-->'>
+        <!--{lang_cp str="del"}--></a>    
+		<input id="create_ads" name="create_ads" type="button" value="<!--{lang_cp str="create_ads"}-->" onclick="alertWin('<!--{lang_cp str="tip"}-->','<!--{$arr_ads[loop].id}-->',300,125);">
+		</div></td>
+    </tr>
+    <!--{/section}-->
+    <tr>
+      <td colspan="4">
+        
+        <div align="left">
+          <!--{page2html str=$pageList}-->
+        </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

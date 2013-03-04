@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<TITLE>管理页面</TITLE>
+<link href="templates/admin/css/main_common.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="static/js/ui.datepicker.css" type="text/css" media="screen"  charset="utf-8" />
+<!--{include file="common/common.html"}-->
+<script src="static/js/ui.datepicker.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/ui.datepicker-zh-CN.js" type="text/javascript" charset="utf-8"></script>	
+<script src="static/js/date.js" type="text/javascript" charset="utf-8"></script>
+<!--<script type="text/javascript" charset="utf-8">
+	jQuery(function($){
+		$('#date_time').datepicker({
+			yearRange: '1900:2099', //取值范围.
+			showOn: 'both', //输入框和图片按钮都可以使用日历控件。
+			buttonImage: 'static/js/calendar.gif', //日历控件的按钮
+			buttonImageOnly: true,
+			showButtonPanel: true
+		});		
+	});
+</script>-->
+</head>
+<body>
+<form action="" method="post" name="theform" id="theform">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="77%" ><h2><!--{lang_cp str="api"}--></h2></td>
+      <td width="23%" ></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="sty"></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr height="30">
+      <td height="20" valign="middle" class="biaoge"></td>
+      <td><!--{lang_cp str="groupon_data"}--></td>
+    </tr>
+    <tr height="30">
+      <td height="20" valign="middle" class="biaoge"></td>
+      <td><!--{lang_cp str="groupon_now"}--><input name="groupon" type="radio" value="1" checked>
+      &nbsp;<!--{lang_cp str="groupon_past"}--><input type="radio" name="groupon" value="2">&nbsp;<!--{lang_cp str="groupon_all"}--><input type="radio" name="groupon" value="3">
+      </td>
+    </tr>
+	<tr height="30">
+      <td height="20" valign="middle" class="biaoge"></td>
+      <td><input name="date_time" type="text" id="date_time" onClick="return Calendar('date_time');"></td>
+    </tr>
+	<tr height="30">
+      <td height="52" valign="top" class="biaoge">&nbsp;</td>
+      <td align="left" valign="middle"><input type="submit" id="submit" name="submit" value="<!--{lang_cp str='sohu'}-->"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
